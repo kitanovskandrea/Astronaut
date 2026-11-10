@@ -1,0 +1,32 @@
+{
+  "variant": "asteroids",
+  "seed": 11,
+  "budget": 1000000,
+  "repeat": 6,
+  "alpha": 0.1,
+  "gamma": 0.99,
+  "environment_commit": "5fa9ad93b094dabb33ff95a3f66b18dd863ecd12",
+  "train_seconds": 51.534987916995306,
+  "frames": 5941283,
+  "episodes": 26393,
+  "states": 2419,
+  "first_td_mse": 4.9414147337484176,
+  "last_td_mse": 0.8301771410945226,
+  "greedy": {
+    "episodes": 100,
+    "return_mean": 18.76980000000001,
+    "frames_mean": 1073.76,
+    "survival_rate": 0.73,
+    "oxygen_mean": 0.0,
+    "unseen_fraction": 5e-05
+  },
+  "random": {
+    "episodes": 100,
+    "return_mean": -8.2302,
+    "frames_mean": 89.49,
+    "survival_rate": 0.0,
+    "oxygen_mean": 0.0,
+    "unseen_fraction": 0.002125
+  },
+  "model_sha256": "a5d6789c612c00763ec47f5bb36f134f005010537bfacaaca9d73853000ee3b6"
+}

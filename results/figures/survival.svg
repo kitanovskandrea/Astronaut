@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img">
+<title>Validation survival learning curve</title>
+<desc>Independent curriculum-chain means; n = 5; official rewards unchanged</desc>
+<rect width="1200" height="740" fill="#fff"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#172d45} .title{font-size:28px;font-weight:700} .subtitle{font-size:16px;fill:#526778} .axis{font-size:15px;fill:#526778} .small{font-size:14px;fill:#526778} .value{font-size:17px;font-weight:700} .panel{font-size:19px;font-weight:700}</style>
+<text x="52" y="55" class="title" text-anchor="start">Validation survival learning curve</text>
+<text x="52" y="87" class="subtitle" text-anchor="start">Independent curriculum-chain means; n = 5; official rewards unchanged</text>
+<line x1="112" y1="582" x2="1142" y2="582" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="587" class="axis" text-anchor="end">0</text>
+<line x1="112" y1="496" x2="1142" y2="496" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="501" class="axis" text-anchor="end">240</text>
+<line x1="112" y1="410" x2="1142" y2="410" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="415" class="axis" text-anchor="end">480</text>
+<line x1="112" y1="324" x2="1142" y2="324" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="329" class="axis" text-anchor="end">720</text>
+<line x1="112" y1="238" x2="1142" y2="238" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="243" class="axis" text-anchor="end">960</text>
+<line x1="112" y1="152" x2="1142" y2="152" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="157" class="axis" text-anchor="end">1.2k</text>
+<line x1="112" y1="152" x2="112" y2="582" stroke="#8ea1b2" stroke-width="1"/>
+<text x="44" y="367" class="axis" text-anchor="middle" transform="rotate(-90 44 367)">Survived physics steps</text>
+<line x1="112" y1="582" x2="112" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="112" y="610" class="axis" text-anchor="middle">0</text>
+<line x1="318" y1="582" x2="318" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="318" y="610" class="axis" text-anchor="middle">400k</text>
+<line x1="524" y1="582" x2="524" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="524" y="610" class="axis" text-anchor="middle">800k</text>
+<line x1="730" y1="582" x2="730" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="730" y="610" class="axis" text-anchor="middle">1.2M</text>
+<line x1="936" y1="582" x2="936" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="936" y="610" class="axis" text-anchor="middle">1.6M</text>
+<line x1="1142" y1="582" x2="1142" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="1142" y="610" class="axis" text-anchor="middle">2M</text>
+<text x="627" y="647" class="axis" text-anchor="middle">Q decisions (up to six actual physics frames per decision)</text>
+<line x1="112" y1="119" x2="140" y2="119" stroke="#2867c7" stroke-width="3"/>
+<text x="150" y="124" class="axis" text-anchor="start">Flight</text>
+<line x1="330" y1="119" x2="358" y2="119" stroke="#008d82" stroke-width="3"/>
+<text x="368" y="124" class="axis" text-anchor="start">+ Asteroids</text>
+<line x1="548" y1="119" x2="576" y2="119" stroke="#d55b36" stroke-width="3"/>
+<text x="586" y="124" class="axis" text-anchor="start">+ Oxygen</text>
+<text x="1142" y="124" class="small" text-anchor="end">Band: mean +/- sample SD</text>
+<polygon points="112.00,556.20 163.50,152.00 215.00,152.00 266.50,152.00 318.00,152.00 369.50,152.00 421.00,152.00 472.50,152.00 524.00,152.00 575.50,152.00 627.00,152.00 627.00,152.00 575.50,152.00 524.00,152.00 472.50,152.00 421.00,152.00 369.50,152.00 318.00,152.00 266.50,152.00 215.00,152.00 163.50,152.00 112.00,556.20" fill="#2867c7" opacity="0.14"/>
+<polyline points="112.00,556.20 163.50,152.00 215.00,152.00 266.50,152.00 318.00,152.00 369.50,152.00 421.00,152.00 472.50,152.00 524.00,152.00 575.50,152.00 627.00,152.00" fill="none" stroke="#2867c7" stroke-width="2.7" stroke-linejoin="round"/>
+<circle cx="112.00" cy="556.20" r="3.3" fill="#2867c7"/>
+<circle cx="163.50" cy="152.00" r="3.3" fill="#2867c7"/>
+<circle cx="215.00" cy="152.00" r="3.3" fill="#2867c7"/>
+<circle cx="266.50" cy="152.00" r="3.3" fill="#2867c7"/>
+<circle cx="318.00" cy="152.00" r="3.3" fill="#2867c7"/>
+<circle cx="369.50" cy="152.00" r="3.3" fill="#2867c7"/>
+<circle cx="421.00" cy="152.00" r="3.3" fill="#2867c7"/>
+<circle cx="472.50" cy="152.00" r="3.3" fill="#2867c7"/>
+<circle cx="524.00" cy="152.00" r="3.3" fill="#2867c7"/>
+<circle cx="575.50" cy="152.00" r="3.3" fill="#2867c7"/>
+<circle cx="627.00" cy="152.00" r="3.3" fill="#2867c7"/>
+<polygon points="112.00,506.48 163.50,252.39 215.00,174.83 266.50,174.32 318.00,171.38 369.50,157.63 421.00,152.00 472.50,152.00 524.00,160.64 575.50,152.00 627.00,152.00 678.50,152.00 730.00,152.00 781.50,152.00 833.00,152.69 884.50,152.00 884.50,157.77 833.00,162.74 781.50,158.77 730.00,162.31 678.50,162.86 627.00,154.89 575.50,163.57 524.00,170.65 472.50,171.21 421.00,223.24 369.50,212.63 318.00,216.22 266.50,220.42 215.00,227.26 163.50,330.19 112.00,506.48" fill="#008d82" opacity="0.14"/>
+<polyline points="112.00,506.48 163.50,291.29 215.00,201.05 266.50,197.37 318.00,193.80 369.50,185.13 421.00,183.71 472.50,161.57 524.00,165.64 575.50,157.04 627.00,153.03 678.50,157.12 730.00,156.68 781.50,154.37 833.00,157.71 884.50,154.41" fill="none" stroke="#008d82" stroke-width="2.7" stroke-linejoin="round"/>
+<polygon points="112.00,152.00 163.50,153.20 215.00,152.00 266.50,152.21 318.00,152.24 369.50,152.00 421.00,152.00 472.50,152.25 524.00,152.00 575.50,152.00 627.00,152.00 678.50,152.23 730.00,154.11 781.50,154.11 833.00,152.00 884.50,152.27 936.00,152.26 987.50,152.30 1039.00,152.30 1090.50,152.30 1142.00,152.00 1142.00,173.58 1090.50,164.43 1039.00,164.43 987.50,164.43 936.00,171.38 884.50,171.38 833.00,172.96 781.50,166.43 730.00,166.43 678.50,166.91 627.00,160.30 575.50,162.07 524.00,166.00 472.50,167.67 421.00,166.30 369.50,163.05 318.00,162.82 266.50,162.44 215.00,156.77 163.50,170.92 112.00,160.84" fill="#d55b36" opacity="0.14"/>
+<polyline points="112.00,155.48 163.50,162.06 215.00,154.26 266.50,157.33 318.00,157.53 369.50,157.37 421.00,158.93 472.50,159.96 524.00,158.59 575.50,156.84 627.00,156.13 678.50,159.57 730.00,160.27 781.50,160.27 833.00,162.35 884.50,161.82 936.00,161.82 987.50,158.36 1039.00,158.36 1090.50,158.36 1142.00,161.72" fill="none" stroke="#d55b36" stroke-width="2.7" stroke-linejoin="round"/>
+<text x="52" y="687" class="small" text-anchor="start">Frozen greedy checkpoint evaluations on validation seeds; final testing uses separate unseen seeds.</text>
+<text x="52" y="712" class="small" text-anchor="start">Sample SD describes variation across independent chains, not confidence; bands are clipped at physical bounds.</text>
+</svg>

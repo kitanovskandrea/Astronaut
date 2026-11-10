@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img">
+<title>Validation oxygen collection curve</title>
+<desc>Independent curriculum-chain means; n = 5; official rewards unchanged</desc>
+<rect width="1200" height="740" fill="#fff"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#172d45} .title{font-size:28px;font-weight:700} .subtitle{font-size:16px;fill:#526778} .axis{font-size:15px;fill:#526778} .small{font-size:14px;fill:#526778} .value{font-size:17px;font-weight:700} .panel{font-size:19px;font-weight:700}</style>
+<text x="52" y="55" class="title" text-anchor="start">Validation oxygen collection curve</text>
+<text x="52" y="87" class="subtitle" text-anchor="start">Independent curriculum-chain means; n = 5; official rewards unchanged</text>
+<line x1="112" y1="582" x2="1142" y2="582" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="587" class="axis" text-anchor="end">0</text>
+<line x1="112" y1="496" x2="1142" y2="496" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="501" class="axis" text-anchor="end">2</text>
+<line x1="112" y1="410" x2="1142" y2="410" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="415" class="axis" text-anchor="end">4</text>
+<line x1="112" y1="324" x2="1142" y2="324" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="329" class="axis" text-anchor="end">6</text>
+<line x1="112" y1="238" x2="1142" y2="238" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="243" class="axis" text-anchor="end">8</text>
+<line x1="112" y1="152" x2="1142" y2="152" stroke="#e2e9ef" stroke-width="1"/>
+<text x="100" y="157" class="axis" text-anchor="end">10</text>
+<line x1="112" y1="152" x2="112" y2="582" stroke="#8ea1b2" stroke-width="1"/>
+<text x="44" y="367" class="axis" text-anchor="middle" transform="rotate(-90 44 367)">Tanks / episode</text>
+<line x1="112" y1="582" x2="112" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="112" y="610" class="axis" text-anchor="middle">0</text>
+<line x1="318" y1="582" x2="318" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="318" y="610" class="axis" text-anchor="middle">400k</text>
+<line x1="524" y1="582" x2="524" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="524" y="610" class="axis" text-anchor="middle">800k</text>
+<line x1="730" y1="582" x2="730" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="730" y="610" class="axis" text-anchor="middle">1.2M</text>
+<line x1="936" y1="582" x2="936" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="936" y="610" class="axis" text-anchor="middle">1.6M</text>
+<line x1="1142" y1="582" x2="1142" y2="588" stroke="#8ea1b2" stroke-width="1"/>
+<text x="1142" y="610" class="axis" text-anchor="middle">2M</text>
+<text x="627" y="647" class="axis" text-anchor="middle">Q decisions (up to six actual physics frames per decision)</text>
+<line x1="112" y1="119" x2="140" y2="119" stroke="#d55b36" stroke-width="3"/>
+<text x="150" y="124" class="axis" text-anchor="start">+ Oxygen</text>
+<text x="1142" y="124" class="small" text-anchor="end">Band: mean +/- sample SD</text>
+<polygon points="112.00,402.02 163.50,396.98 215.00,375.47 266.50,365.23 318.00,360.67 369.50,359.49 421.00,349.57 472.50,343.17 524.00,333.49 575.50,323.32 627.00,322.78 678.50,326.81 730.00,325.62 781.50,325.48 833.00,332.64 884.50,330.10 936.00,330.09 987.50,322.58 1039.00,324.48 1090.50,323.97 1142.00,329.72 1142.00,379.86 1090.50,381.82 1039.00,382.00 987.50,382.18 936.00,382.58 884.50,382.22 833.00,382.78 781.50,385.48 730.00,384.65 678.50,383.80 627.00,383.01 575.50,388.67 524.00,388.47 472.50,395.30 421.00,404.38 369.50,401.35 318.00,401.53 266.50,407.99 215.00,407.03 163.50,413.73 112.00,413.85" fill="#d55b36" opacity="0.14"/>
+<polyline points="112.00,407.94 163.50,405.36 215.00,391.25 266.50,386.61 318.00,381.10 369.50,380.42 421.00,376.98 472.50,369.24 524.00,360.98 575.50,355.99 627.00,352.90 678.50,355.30 730.00,355.13 781.50,355.48 833.00,357.71 884.50,356.16 936.00,356.34 987.50,352.38 1039.00,353.24 1090.50,352.90 1142.00,354.79" fill="none" stroke="#d55b36" stroke-width="2.7" stroke-linejoin="round"/>
+<text x="52" y="687" class="small" text-anchor="start">Frozen greedy checkpoint evaluations on validation seeds; final testing uses separate unseen seeds.</text>
+<text x="52" y="712" class="small" text-anchor="start">Sample SD describes variation across independent chains, not confidence; bands are clipped at physical bounds.</text>
+</svg>

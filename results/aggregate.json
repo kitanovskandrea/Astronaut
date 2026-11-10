@@ -1,0 +1,3485 @@
+{
+  "schema": "astronaut-aggregate-v2",
+  "budget_unit": "decision_updates",
+  "replicate": "independent curriculum chain",
+  "dispersion": "sample standard deviation (n-1 denominator)",
+  "environment_commit": "0db0652ad3b8cece05d476c56637a3dcb56557cd",
+  "variants": {
+    "fly": {
+      "n": 5,
+      "training_seeds": [
+        11,
+        23,
+        37,
+        51,
+        79
+      ],
+      "state_capacity": 72,
+      "budget": {
+        "mean": 1000000.0,
+        "sd": 0.0,
+        "n": 5,
+        "min": 1000000.0,
+        "max": 1000000.0
+      },
+      "train_seconds": {
+        "mean": 40.65859879581258,
+        "sd": 0.16008665450760082,
+        "n": 5,
+        "min": 40.447253321821336,
+        "max": 40.859907365753315
+      },
+      "frames": {
+        "mean": 5978066.2,
+        "sd": 258.6652276592275,
+        "n": 5,
+        "min": 5977808.0,
+        "max": 5978485.0
+      },
+      "states": {
+        "mean": 67.6,
+        "sd": 0.5477225575051661,
+        "n": 5,
+        "min": 67.0,
+        "max": 68.0
+      },
+      "selected_step": {
+        "mean": 100000.0,
+        "sd": 0.0,
+        "n": 5,
+        "min": 100000.0,
+        "max": 100000.0
+      },
+      "greedy": {
+        "return_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1200.0,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "unseen_fraction": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "collision_ground_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "collision_ceiling_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "collision_asteroid_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "episodes_per_policy": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "random": {
+        "return_mean": {
+          "mean": -1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": -1.0,
+          "max": -1.0
+        },
+        "frames_mean": {
+          "mean": 225.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 225.0,
+          "max": 225.0
+        },
+        "survival_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "unseen_fraction": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "collision_ground_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "collision_ceiling_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "collision_asteroid_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "episodes_per_policy": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "final_coverage": {
+        "max_visits": {
+          "mean": 92197.4,
+          "sd": 886.8423196938676,
+          "n": 5,
+          "min": 91124.0,
+          "max": 93305.0
+        },
+        "median_visits": {
+          "mean": 964.6,
+          "sd": 36.65105728352185,
+          "n": 5,
+          "min": 931.0,
+          "max": 1024.0
+        },
+        "min_visits": {
+          "mean": 1.4,
+          "sd": 0.5477225575051661,
+          "n": 5,
+          "min": 1.0,
+          "max": 2.0
+        },
+        "possible_state_action_pairs": {
+          "mean": 144.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 144.0,
+          "max": 144.0
+        },
+        "state_action_coverage_fraction": {
+          "mean": 0.9333333333333333,
+          "sd": 0.007917884896521763,
+          "n": 5,
+          "min": 0.9236111111111112,
+          "max": 0.9444444444444444
+        },
+        "state_capacity": {
+          "mean": 72.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 72.0,
+          "max": 72.0
+        },
+        "state_coverage_fraction": {
+          "mean": 0.9388888888888889,
+          "sd": 0.00760725774312728,
+          "n": 5,
+          "min": 0.9305555555555556,
+          "max": 0.9444444444444444
+        },
+        "total_updates": {
+          "mean": 1000000.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1000000.0,
+          "max": 1000000.0
+        },
+        "visited_pairs_ge100_fraction": {
+          "mean": 0.8080622111810596,
+          "sd": 0.004817741637641386,
+          "n": 5,
+          "min": 0.8014705882352942,
+          "max": 0.8134328358208955
+        },
+        "visited_pairs_ge10_fraction": {
+          "mean": 0.9509319195951053,
+          "sd": 0.006233065319467469,
+          "n": 5,
+          "min": 0.9411764705882353,
+          "max": 0.9552238805970149
+        },
+        "visited_pairs_ge50_fraction": {
+          "mean": 0.8586893338115555,
+          "sd": 0.010804534009466623,
+          "n": 5,
+          "min": 0.8444444444444444,
+          "max": 0.8721804511278195
+        },
+        "visited_pairs_lt10_fraction": {
+          "mean": 0.049068080404894784,
+          "sd": 0.0062330653194674745,
+          "n": 5,
+          "min": 0.04477611940298507,
+          "max": 0.058823529411764705
+        },
+        "visited_state_action_pairs": {
+          "mean": 134.4,
+          "sd": 1.140175425099138,
+          "n": 5,
+          "min": 133.0,
+          "max": 136.0
+        },
+        "visited_states": {
+          "mean": 67.6,
+          "sd": 0.5477225575051661,
+          "n": 5,
+          "min": 67.0,
+          "max": 68.0
+        },
+        "zero_visit_actions_in_visited_states": {
+          "mean": 0.8,
+          "sd": 0.8366600265340756,
+          "n": 5,
+          "min": 0.0,
+          "max": 2.0
+        }
+      },
+      "initialized_rows": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "n": 5,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "qualified_runs": 5,
+      "stage_cost": {
+        "decision_updates": {
+          "mean": 1000000.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1000000.0,
+          "max": 1000000.0
+        },
+        "physics_frames": {
+          "mean": 5978066.2,
+          "sd": 258.6652276592275,
+          "n": 5,
+          "min": 5977808.0,
+          "max": 5978485.0
+        },
+        "train_seconds": {
+          "mean": 40.65859879581258,
+          "sd": 0.16008665450760082,
+          "n": 5,
+          "min": 40.447253321821336,
+          "max": 40.859907365753315
+        }
+      },
+      "cumulative_cost": {
+        "decision_updates": {
+          "mean": 1000000.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1000000.0,
+          "max": 1000000.0
+        },
+        "physics_frames": {
+          "mean": 5978066.2,
+          "sd": 258.6652276592275,
+          "n": 5,
+          "min": 5977808.0,
+          "max": 5978485.0
+        },
+        "train_seconds": {
+          "mean": 40.65859879581258,
+          "sd": 0.16008665450760082,
+          "n": 5,
+          "min": 40.447253321821336,
+          "max": 40.859907365753315
+        }
+      },
+      "gate": {
+        "minimum_survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "minimum_oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "baseline_survival_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "baseline_oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "first_target_step": {
+        "reached_runs": 5,
+        "total_runs": 5,
+        "steps_among_reached": {
+          "mean": 100000.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 100000.0,
+          "max": 100000.0
+        }
+      },
+      "stability_step": {
+        "reached_runs": 5,
+        "total_runs": 5,
+        "steps_among_reached": {
+          "mean": 200000.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 200000.0,
+          "max": 200000.0
+        }
+      }
+    },
+    "asteroids": {
+      "n": 5,
+      "training_seeds": [
+        11,
+        23,
+        37,
+        51,
+        79
+      ],
+      "state_capacity": 2880,
+      "budget": {
+        "mean": 1500000.0,
+        "sd": 0.0,
+        "n": 5,
+        "min": 1500000.0,
+        "max": 1500000.0
+      },
+      "train_seconds": {
+        "mean": 183.7099559252325,
+        "sd": 0.23264859547446853,
+        "n": 5,
+        "min": 183.37331190047553,
+        "max": 183.951750754175
+      },
+      "frames": {
+        "mean": 8991983.2,
+        "sd": 277.6269079178025,
+        "n": 5,
+        "min": 8991664.0,
+        "max": 8992415.0
+      },
+      "states": {
+        "mean": 2706.6,
+        "sd": 12.239281024635392,
+        "n": 5,
+        "min": 2697.0,
+        "max": 2720.0
+      },
+      "selected_step": {
+        "mean": 1040000.0,
+        "sd": 167332.00530681512,
+        "n": 5,
+        "min": 900000.0,
+        "max": 1300000.0
+      },
+      "greedy": {
+        "return_mean": {
+          "mean": -0.013999999999999999,
+          "sd": 0.026076809620810593,
+          "n": 5,
+          "min": -0.06,
+          "max": 0.0
+        },
+        "frames_mean": {
+          "mean": 1193.018,
+          "sd": 13.11913183103215,
+          "n": 5,
+          "min": 1169.84,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.986,
+          "sd": 0.026076809620810618,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "unseen_fraction": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "collision_ground_rate": {
+          "mean": 0.004,
+          "sd": 0.00894427190999916,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.02
+        },
+        "collision_ceiling_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "collision_asteroid_rate": {
+          "mean": 0.01,
+          "sd": 0.017320508075688773,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.04
+        },
+        "episodes_per_policy": [
+          100,
+          100,
+          100,
+          100,
+          100
+        ]
+      },
+      "random": {
+        "return_mean": {
+          "mean": -1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": -1.0,
+          "max": -1.0
+        },
+        "frames_mean": {
+          "mean": 133.92,
+          "sd": 0.0,
+          "n": 5,
+          "min": 133.92,
+          "max": 133.92
+        },
+        "survival_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "unseen_fraction": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "collision_ground_rate": {
+          "mean": 0.12,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.12,
+          "max": 0.12
+        },
+        "collision_ceiling_rate": {
+          "mean": 0.57,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.57,
+          "max": 0.57
+        },
+        "collision_asteroid_rate": {
+          "mean": 0.31,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.31,
+          "max": 0.31
+        },
+        "episodes_per_policy": [
+          100,
+          100,
+          100,
+          100,
+          100
+        ]
+      },
+      "final_coverage": {
+        "max_visits": {
+          "mean": 14973.8,
+          "sd": 1599.8784953864465,
+          "n": 5,
+          "min": 14029.0,
+          "max": 17823.0
+        },
+        "median_visits": {
+          "mean": 50.2,
+          "sd": 2.16794833886788,
+          "n": 5,
+          "min": 47.0,
+          "max": 52.0
+        },
+        "min_visits": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "possible_state_action_pairs": {
+          "mean": 5760.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 5760.0,
+          "max": 5760.0
+        },
+        "state_action_coverage_fraction": {
+          "mean": 0.5388541666666666,
+          "sd": 0.002813892830698143,
+          "n": 5,
+          "min": 0.5345486111111111,
+          "max": 0.5411458333333333
+        },
+        "state_capacity": {
+          "mean": 2880.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 2880.0,
+          "max": 2880.0
+        },
+        "state_coverage_fraction": {
+          "mean": 0.5625694444444445,
+          "sd": 0.0033610680667583476,
+          "n": 5,
+          "min": 0.5569444444444445,
+          "max": 0.5659722222222222
+        },
+        "total_updates": {
+          "mean": 1500000.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1500000.0,
+          "max": 1500000.0
+        },
+        "visited_pairs_ge100_fraction": {
+          "mean": 0.3875889418747896,
+          "sd": 0.00595053842758684,
+          "n": 5,
+          "min": 0.3804909560723514,
+          "max": 0.3944069431051109
+        },
+        "visited_pairs_ge10_fraction": {
+          "mean": 0.7565066235213189,
+          "sd": 0.0054144555132138545,
+          "n": 5,
+          "min": 0.7474326059050064,
+          "max": 0.7619356934069503
+        },
+        "visited_pairs_ge50_fraction": {
+          "mean": 0.5015834727569765,
+          "sd": 0.00878503440743459,
+          "n": 5,
+          "min": 0.48812580231065467,
+          "max": 0.5098039215686274
+        },
+        "visited_pairs_lt10_fraction": {
+          "mean": 0.24349337647868108,
+          "sd": 0.005414455513213825,
+          "n": 5,
+          "min": 0.2380643065930497,
+          "max": 0.25256739409499357
+        },
+        "visited_state_action_pairs": {
+          "mean": 3103.8,
+          "sd": 16.208022704821214,
+          "n": 5,
+          "min": 3079.0,
+          "max": 3117.0
+        },
+        "visited_states": {
+          "mean": 1620.2,
+          "sd": 9.67987603226405,
+          "n": 5,
+          "min": 1604.0,
+          "max": 1630.0
+        },
+        "zero_visit_actions_in_visited_states": {
+          "mean": 136.6,
+          "sd": 9.396807968666806,
+          "n": 5,
+          "min": 129.0,
+          "max": 150.0
+        }
+      },
+      "initialized_rows": {
+        "mean": 2696.0,
+        "sd": 21.908902300206645,
+        "n": 5,
+        "min": 2680.0,
+        "max": 2720.0
+      },
+      "qualified_runs": 5,
+      "stage_cost": {
+        "decision_updates": {
+          "mean": 1500000.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1500000.0,
+          "max": 1500000.0
+        },
+        "physics_frames": {
+          "mean": 8991983.2,
+          "sd": 277.6269079178025,
+          "n": 5,
+          "min": 8991664.0,
+          "max": 8992415.0
+        },
+        "train_seconds": {
+          "mean": 183.7099559252325,
+          "sd": 0.23264859547446853,
+          "n": 5,
+          "min": 183.37331190047553,
+          "max": 183.951750754175
+        }
+      },
+      "cumulative_cost": {
+        "decision_updates": {
+          "mean": 2500000.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 2500000.0,
+          "max": 2500000.0
+        },
+        "physics_frames": {
+          "mean": 14970049.4,
+          "sd": 492.26547715638156,
+          "n": 5,
+          "min": 14969654.0,
+          "max": 14970900.0
+        },
+        "train_seconds": {
+          "mean": 224.3685547210451,
+          "sd": 0.3228265744028259,
+          "n": 5,
+          "min": 224.0292942886881,
+          "max": 224.81165811992832
+        }
+      },
+      "gate": {
+        "minimum_survival_rate": {
+          "mean": 0.9,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.9,
+          "max": 0.9
+        },
+        "minimum_oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "baseline_survival_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "baseline_oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "first_target_step": {
+        "reached_runs": 5,
+        "total_runs": 5,
+        "steps_among_reached": {
+          "mean": 380000.0,
+          "sd": 130384.04810405297,
+          "n": 5,
+          "min": 200000.0,
+          "max": 500000.0
+        }
+      },
+      "stability_step": {
+        "reached_runs": 5,
+        "total_runs": 5,
+        "steps_among_reached": {
+          "mean": 680000.0,
+          "sd": 109544.51150103322,
+          "n": 5,
+          "min": 600000.0,
+          "max": 800000.0
+        }
+      }
+    },
+    "oxygen": {
+      "n": 5,
+      "training_seeds": [
+        11,
+        23,
+        37,
+        51,
+        79
+      ],
+      "state_capacity": 103680,
+      "budget": {
+        "mean": 2000000.0,
+        "sd": 0.0,
+        "n": 5,
+        "min": 2000000.0,
+        "max": 2000000.0
+      },
+      "train_seconds": {
+        "mean": 432.5698050723819,
+        "sd": 0.6022438410570966,
+        "n": 5,
+        "min": 431.90433841149206,
+        "max": 433.3538324459805
+      },
+      "frames": {
+        "mean": 11993966.4,
+        "sd": 1146.1124726657501,
+        "n": 5,
+        "min": 11992975.0,
+        "max": 11995637.0
+      },
+      "states": {
+        "mean": 97436.0,
+        "sd": 442.1555156277031,
+        "n": 5,
+        "min": 97098.0,
+        "max": 97920.0
+      },
+      "selected_step": {
+        "mean": 1180000.0,
+        "sd": 396232.255123179,
+        "n": 5,
+        "min": 800000.0,
+        "max": 1700000.0
+      },
+      "greedy": {
+        "return_mean": {
+          "mean": 5.288,
+          "sd": 0.6103441652051733,
+          "n": 5,
+          "min": 4.78,
+          "max": 6.25
+        },
+        "frames_mean": {
+          "mean": 1185.04,
+          "sd": 12.529000359166757,
+          "n": 5,
+          "min": 1166.36,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.968,
+          "sd": 0.031144823004794868,
+          "n": 5,
+          "min": 0.93,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.32,
+          "sd": 0.6090155991434044,
+          "n": 5,
+          "min": 4.83,
+          "max": 6.27
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.489412240071781,
+          "sd": 0.5120403694877378,
+          "n": 5,
+          "min": 4.025,
+          "max": 5.278177639720181
+        },
+        "combined_success_rate": {
+          "mean": 0.932,
+          "sd": 0.028635642126552688,
+          "n": 5,
+          "min": 0.89,
+          "max": 0.97
+        },
+        "unseen_fraction": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "collision_ground_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "collision_ceiling_rate": {
+          "mean": 0.01,
+          "sd": 0.017320508075688773,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.04
+        },
+        "collision_asteroid_rate": {
+          "mean": 0.022,
+          "sd": 0.019235384061671346,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.05
+        },
+        "episodes_per_policy": [
+          100,
+          100,
+          100,
+          100,
+          100
+        ]
+      },
+      "random": {
+        "return_mean": {
+          "mean": -0.93,
+          "sd": 0.0,
+          "n": 5,
+          "min": -0.93,
+          "max": -0.93
+        },
+        "frames_mean": {
+          "mean": 133.61,
+          "sd": 0.0,
+          "n": 5,
+          "min": 133.61,
+          "max": 133.61
+        },
+        "survival_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_mean": {
+          "mean": 0.07,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.07,
+          "max": 0.07
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.5239128807723973,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.5239128807723973,
+          "max": 0.5239128807723973
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "unseen_fraction": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "collision_ground_rate": {
+          "mean": 0.12,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.12,
+          "max": 0.12
+        },
+        "collision_ceiling_rate": {
+          "mean": 0.59,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.59,
+          "max": 0.59
+        },
+        "collision_asteroid_rate": {
+          "mean": 0.29,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.29,
+          "max": 0.29
+        },
+        "episodes_per_policy": [
+          100,
+          100,
+          100,
+          100,
+          100
+        ]
+      },
+      "final_coverage": {
+        "max_visits": {
+          "mean": 5505.0,
+          "sd": 1089.1779009877127,
+          "n": 5,
+          "min": 4442.0,
+          "max": 7345.0
+        },
+        "median_visits": {
+          "mean": 10.4,
+          "sd": 0.5477225575051661,
+          "n": 5,
+          "min": 10.0,
+          "max": 11.0
+        },
+        "min_visits": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "possible_state_action_pairs": {
+          "mean": 207360.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 207360.0,
+          "max": 207360.0
+        },
+        "state_action_coverage_fraction": {
+          "mean": 0.09896315586419753,
+          "sd": 0.0025030816737776325,
+          "n": 5,
+          "min": 0.0961033950617284,
+          "max": 0.10167341820987655
+        },
+        "state_capacity": {
+          "mean": 103680.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 103680.0,
+          "max": 103680.0
+        },
+        "state_coverage_fraction": {
+          "mean": 0.1153125,
+          "sd": 0.0021131117425937118,
+          "n": 5,
+          "min": 0.11278935185185185,
+          "max": 0.11744791666666667
+        },
+        "total_updates": {
+          "mean": 2000000.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 2000000.0,
+          "max": 2000000.0
+        },
+        "visited_pairs_ge100_fraction": {
+          "mean": 0.17531241008650786,
+          "sd": 0.005720253810234284,
+          "n": 5,
+          "min": 0.1676807009004624,
+          "max": 0.18125250903251705
+        },
+        "visited_pairs_ge10_fraction": {
+          "mean": 0.5173655369792884,
+          "sd": 0.01001352094764034,
+          "n": 5,
+          "min": 0.5042845755280988,
+          "max": 0.5281032111179623
+        },
+        "visited_pairs_ge50_fraction": {
+          "mean": 0.25524739027681553,
+          "sd": 0.006679495508316214,
+          "n": 5,
+          "min": 0.2465806765636408,
+          "max": 0.2624302807837155
+        },
+        "visited_pairs_lt10_fraction": {
+          "mean": 0.48263446302071156,
+          "sd": 0.010013520947640317,
+          "n": 5,
+          "min": 0.4718967888820377,
+          "max": 0.49571542447190114
+        },
+        "visited_state_action_pairs": {
+          "mean": 20521.0,
+          "sd": 519.0390158745295,
+          "n": 5,
+          "min": 19928.0,
+          "max": 21083.0
+        },
+        "visited_states": {
+          "mean": 11955.6,
+          "sd": 219.08742547211605,
+          "n": 5,
+          "min": 11694.0,
+          "max": 12177.0
+        },
+        "zero_visit_actions_in_visited_states": {
+          "mean": 3390.2,
+          "sd": 102.7214680580452,
+          "n": 5,
+          "min": 3217.0,
+          "max": 3462.0
+        }
+      },
+      "initialized_rows": {
+        "mean": 97430.4,
+        "sd": 447.1831839414358,
+        "n": 5,
+        "min": 97092.0,
+        "max": 97920.0
+      },
+      "qualified_runs": 5,
+      "stage_cost": {
+        "decision_updates": {
+          "mean": 2000000.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 2000000.0,
+          "max": 2000000.0
+        },
+        "physics_frames": {
+          "mean": 11993966.4,
+          "sd": 1146.1124726657501,
+          "n": 5,
+          "min": 11992975.0,
+          "max": 11995637.0
+        },
+        "train_seconds": {
+          "mean": 432.5698050723819,
+          "sd": 0.6022438410570966,
+          "n": 5,
+          "min": 431.90433841149206,
+          "max": 433.3538324459805
+        }
+      },
+      "cumulative_cost": {
+        "decision_updates": {
+          "mean": 4500000.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 4500000.0,
+          "max": 4500000.0
+        },
+        "physics_frames": {
+          "mean": 26964015.8,
+          "sd": 1203.889612879852,
+          "n": 5,
+          "min": 26962710.0,
+          "max": 26965610.0
+        },
+        "train_seconds": {
+          "mean": 656.9383597934269,
+          "sd": 0.7336993422090655,
+          "n": 5,
+          "min": 655.9336327001802,
+          "max": 657.8295508265728
+        }
+      },
+      "gate": {
+        "minimum_survival_rate": {
+          "mean": 0.938,
+          "sd": 0.017888543819998333,
+          "n": 5,
+          "min": 0.9099999999999999,
+          "max": 0.95
+        },
+        "minimum_oxygen_mean": {
+          "mean": 4.298,
+          "sd": 0.13754999091239542,
+          "n": 5,
+          "min": 4.109999999999999,
+          "max": 4.45
+        },
+        "baseline_survival_rate": {
+          "mean": 0.9879999999999999,
+          "sd": 0.017888543819998333,
+          "n": 5,
+          "min": 0.96,
+          "max": 1.0
+        },
+        "baseline_oxygen_mean": {
+          "mean": 4.048,
+          "sd": 0.1375499909123953,
+          "n": 5,
+          "min": 3.86,
+          "max": 4.2
+        }
+      },
+      "first_target_step": {
+        "reached_runs": 5,
+        "total_runs": 5,
+        "steps_among_reached": {
+          "mean": 340000.0,
+          "sd": 313049.51684997056,
+          "n": 5,
+          "min": 200000.0,
+          "max": 900000.0
+        }
+      },
+      "stability_step": {
+        "reached_runs": 5,
+        "total_runs": 5,
+        "steps_among_reached": {
+          "mean": 620000.0,
+          "sd": 521536.1924162119,
+          "n": 5,
+          "min": 300000.0,
+          "max": 1500000.0
+        }
+      }
+    }
+  },
+  "validation_curves": {
+    "fly": [
+      {
+        "step": 0,
+        "n": 5,
+        "frames_mean": {
+          "mean": 72.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 72.0,
+          "max": 72.0
+        },
+        "survival_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": -1.0,
+          "max": -1.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 100000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1200.0,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 200000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1200.0,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 300000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1200.0,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 400000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1200.0,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 500000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1200.0,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 600000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1200.0,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 700000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1200.0,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 800000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1200.0,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 900000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1200.0,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 1000000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1200.0,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      }
+    ],
+    "asteroids": [
+      {
+        "step": 0,
+        "n": 5,
+        "frames_mean": {
+          "mean": 210.76,
+          "sd": 0.0,
+          "n": 5,
+          "min": 210.76,
+          "max": 210.76
+        },
+        "survival_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -1.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": -1.0,
+          "max": -1.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 100000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 811.2760000000001,
+          "sd": 108.55382388474392,
+          "n": 5,
+          "min": 695.26,
+          "max": 950.66
+        },
+        "survival_rate": {
+          "mean": 0.344,
+          "sd": 0.14099645385611653,
+          "n": 5,
+          "min": 0.14,
+          "max": 0.5
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.656,
+          "sd": 0.14099645385611653,
+          "n": 5,
+          "min": -0.86,
+          "max": -0.5
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 200000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1063.1280000000002,
+          "sd": 73.15300622667536,
+          "n": 5,
+          "min": 969.24,
+          "max": 1168.9
+        },
+        "survival_rate": {
+          "mean": 0.748,
+          "sd": 0.1136661779070626,
+          "n": 5,
+          "min": 0.58,
+          "max": 0.9
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.252,
+          "sd": 0.11366617790706257,
+          "n": 5,
+          "min": -0.42,
+          "max": -0.1
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 300000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1073.384,
+          "sd": 64.31398354945838,
+          "n": 5,
+          "min": 985.74,
+          "max": 1154.66
+        },
+        "survival_rate": {
+          "mean": 0.748,
+          "sd": 0.11189280584559494,
+          "n": 5,
+          "min": 0.6,
+          "max": 0.9
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.252,
+          "sd": 0.11189280584559493,
+          "n": 5,
+          "min": -0.4,
+          "max": -0.1
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 400000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1083.356,
+          "sd": 62.5618340523997,
+          "n": 5,
+          "min": 1013.44,
+          "max": 1151.48
+        },
+        "survival_rate": {
+          "mean": 0.8119999999999999,
+          "sd": 0.10449880382090503,
+          "n": 5,
+          "min": 0.68,
+          "max": 0.94
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.188,
+          "sd": 0.10449880382090505,
+          "n": 5,
+          "min": -0.32,
+          "max": -0.06
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 500000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1107.5520000000001,
+          "sd": 76.7482997857281,
+          "n": 5,
+          "min": 1013.22,
+          "max": 1195.34
+        },
+        "survival_rate": {
+          "mean": 0.868,
+          "sd": 0.09121403400793104,
+          "n": 5,
+          "min": 0.74,
+          "max": 0.98
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.132,
+          "sd": 0.09121403400793104,
+          "n": 5,
+          "min": -0.26,
+          "max": -0.02
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 600000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1111.504,
+          "sd": 110.30070480282524,
+          "n": 5,
+          "min": 915.1,
+          "max": 1176.12
+        },
+        "survival_rate": {
+          "mean": 0.8160000000000001,
+          "sd": 0.21279097725232618,
+          "n": 5,
+          "min": 0.44,
+          "max": 0.94
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.184,
+          "sd": 0.2127909772523262,
+          "n": 5,
+          "min": -0.56,
+          "max": -0.06
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 700000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1173.2959999999998,
+          "sd": 26.910137123396428,
+          "n": 5,
+          "min": 1134.44,
+          "max": 1197.68
+        },
+        "survival_rate": {
+          "mean": 0.9400000000000001,
+          "sd": 0.056568542494923796,
+          "n": 5,
+          "min": 0.86,
+          "max": 0.98
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.06000000000000001,
+          "sd": 0.05656854249492381,
+          "n": 5,
+          "min": -0.14,
+          "max": -0.02
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 800000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1161.924,
+          "sd": 13.971624100297031,
+          "n": 5,
+          "min": 1147.76,
+          "max": 1182.98
+        },
+        "survival_rate": {
+          "mean": 0.916,
+          "sd": 0.04560701700396551,
+          "n": 5,
+          "min": 0.86,
+          "max": 0.98
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.084,
+          "sd": 0.04560701700396552,
+          "n": 5,
+          "min": -0.14,
+          "max": -0.02
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 900000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1185.94,
+          "sd": 18.23786719986739,
+          "n": 5,
+          "min": 1163.66,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.9800000000000001,
+          "sd": 0.020000000000000018,
+          "n": 5,
+          "min": 0.96,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.02,
+          "sd": 0.02,
+          "n": 5,
+          "min": -0.04,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 1000000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1197.116,
+          "sd": 5.193426614481047,
+          "n": 5,
+          "min": 1188.02,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.992,
+          "sd": 0.010954451150103331,
+          "n": 5,
+          "min": 0.98,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.008,
+          "sd": 0.010954451150103323,
+          "n": 5,
+          "min": -0.02,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 1100000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1185.712,
+          "sd": 16.02266270006329,
+          "n": 5,
+          "min": 1166.2,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.968,
+          "sd": 0.03346640106136301,
+          "n": 5,
+          "min": 0.92,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.032,
+          "sd": 0.033466401061363026,
+          "n": 5,
+          "min": -0.08,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 1200000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1186.94,
+          "sd": 15.724681236832746,
+          "n": 5,
+          "min": 1163.68,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.976,
+          "sd": 0.026076809620810618,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.024,
+          "sd": 0.026076809620810593,
+          "n": 5,
+          "min": -0.06,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 1300000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1193.376,
+          "sd": 12.27660702311514,
+          "n": 5,
+          "min": 1171.74,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.984,
+          "sd": 0.026076809620810618,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.016,
+          "sd": 0.026076809620810593,
+          "n": 5,
+          "min": -0.06,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 1400000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1184.056,
+          "sd": 14.028067578964684,
+          "n": 5,
+          "min": 1168.44,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.968,
+          "sd": 0.0268328157299975,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.032,
+          "sd": 0.026832815729997475,
+          "n": 5,
+          "min": -0.06,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      {
+        "step": 1500000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1193.264,
+          "sd": 9.378468958204227,
+          "n": 5,
+          "min": 1180.76,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.9879999999999999,
+          "sd": 0.017888543819998333,
+          "n": 5,
+          "min": 0.96,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "return_mean": {
+          "mean": -0.012,
+          "sd": 0.01788854381999832,
+          "n": 5,
+          "min": -0.04,
+          "max": 0.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5,
+          "min": 0.0,
+          "max": 0.0
+        }
+      }
+    ],
+    "oxygen": [
+      {
+        "step": 0,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1190.288,
+          "sd": 14.956828540837133,
+          "n": 5,
+          "min": 1166.04,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.9879999999999999,
+          "sd": 0.017888543819998333,
+          "n": 5,
+          "min": 0.96,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 4.048,
+          "sd": 0.1375499909123953,
+          "n": 5,
+          "min": 3.86,
+          "max": 4.2
+        },
+        "return_mean": {
+          "mean": 4.036,
+          "sd": 0.14993331851193062,
+          "n": 5,
+          "min": 3.84,
+          "max": 4.2
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 3.40057602248694,
+          "sd": 0.09537273700495769,
+          "n": 5,
+          "min": 3.2562847983802934,
+          "max": 3.5
+        },
+        "combined_success_rate": {
+          "mean": 0.844,
+          "sd": 0.03847076812334269,
+          "n": 5,
+          "min": 0.8,
+          "max": 0.9
+        }
+      },
+      {
+        "step": 100000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1171.932,
+          "sd": 24.727032171289803,
+          "n": 5,
+          "min": 1139.7,
+          "max": 1195.28
+        },
+        "survival_rate": {
+          "mean": 0.9560000000000001,
+          "sd": 0.035777087639996624,
+          "n": 5,
+          "min": 0.9,
+          "max": 0.98
+        },
+        "oxygen_mean": {
+          "mean": 4.108,
+          "sd": 0.19473058311420946,
+          "n": 5,
+          "min": 3.84,
+          "max": 4.32
+        },
+        "return_mean": {
+          "mean": 4.064,
+          "sd": 0.20995237555217144,
+          "n": 5,
+          "min": 3.78,
+          "max": 4.3
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 3.5050369430712016,
+          "sd": 0.1403222312405722,
+          "n": 5,
+          "min": 3.3352441502944394,
+          "max": 3.6365473003687057
+        },
+        "combined_success_rate": {
+          "mean": 0.812,
+          "sd": 0.059329587896765304,
+          "n": 5,
+          "min": 0.76,
+          "max": 0.9
+        }
+      },
+      {
+        "step": 200000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1193.688,
+          "sd": 6.989343316793078,
+          "n": 5,
+          "min": 1183.02,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.9879999999999999,
+          "sd": 0.010954451150103331,
+          "n": 5,
+          "min": 0.98,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 4.436,
+          "sd": 0.36698773821478015,
+          "n": 5,
+          "min": 3.86,
+          "max": 4.74
+        },
+        "return_mean": {
+          "mean": 4.4239999999999995,
+          "sd": 0.36698773821478015,
+          "n": 5,
+          "min": 3.84,
+          "max": 4.72
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 3.7167423340049703,
+          "sd": 0.3151897937038215,
+          "n": 5,
+          "min": 3.2364087601032967,
+          "max": 4.006694730435664
+        },
+        "combined_success_rate": {
+          "mean": 0.86,
+          "sd": 0.039999999999999994,
+          "n": 5,
+          "min": 0.8,
+          "max": 0.9
+        }
+      },
+      {
+        "step": 300000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1185.132,
+          "sd": 14.27095371725379,
+          "n": 5,
+          "min": 1168.74,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.9640000000000001,
+          "sd": 0.03577708763999663,
+          "n": 5,
+          "min": 0.92,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 4.544,
+          "sd": 0.49727256107692086,
+          "n": 5,
+          "min": 3.86,
+          "max": 5.06
+        },
+        "return_mean": {
+          "mean": 4.508,
+          "sd": 0.5216512244785783,
+          "n": 5,
+          "min": 3.8,
+          "max": 5.06
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 3.8329645182408876,
+          "sd": 0.40337606440193663,
+          "n": 5,
+          "min": 3.2679185221558105,
+          "max": 4.218619762872744
+        },
+        "combined_success_rate": {
+          "mean": 0.852,
+          "sd": 0.09654014708917735,
+          "n": 5,
+          "min": 0.74,
+          "max": 0.96
+        }
+      },
+      {
+        "step": 400000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1184.568,
+          "sd": 14.76801002166511,
+          "n": 5,
+          "min": 1164.0,
+          "max": 1199.92
+        },
+        "survival_rate": {
+          "mean": 0.96,
+          "sd": 0.028284271247461888,
+          "n": 5,
+          "min": 0.92,
+          "max": 0.98
+        },
+        "oxygen_mean": {
+          "mean": 4.672,
+          "sd": 0.47509998947589993,
+          "n": 5,
+          "min": 4.1,
+          "max": 5.24
+        },
+        "return_mean": {
+          "mean": 4.632,
+          "sd": 0.47509998947589954,
+          "n": 5,
+          "min": 4.04,
+          "max": 5.22
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 3.946198038650512,
+          "sd": 0.4255886081707609,
+          "n": 5,
+          "min": 3.4797073650976866,
+          "max": 4.429416737109045
+        },
+        "combined_success_rate": {
+          "mean": 0.8719999999999999,
+          "sd": 0.06870225614927064,
+          "n": 5,
+          "min": 0.78,
+          "max": 0.94
+        }
+      },
+      {
+        "step": 500000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1185.024,
+          "sd": 15.859819671105967,
+          "n": 5,
+          "min": 1166.18,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.976,
+          "sd": 0.026076809620810618,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 4.688000000000001,
+          "sd": 0.4867442860476124,
+          "n": 5,
+          "min": 4.3,
+          "max": 5.34
+        },
+        "return_mean": {
+          "mean": 4.664,
+          "sd": 0.465274112755051,
+          "n": 5,
+          "min": 4.3,
+          "max": 5.3
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 3.96055769554833,
+          "sd": 0.4607476321589771,
+          "n": 5,
+          "min": 3.5833333333333335,
+          "max": 4.559893431704068
+        },
+        "combined_success_rate": {
+          "mean": 0.9,
+          "sd": 0.04242640687119284,
+          "n": 5,
+          "min": 0.84,
+          "max": 0.94
+        }
+      },
+      {
+        "step": 600000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1180.66,
+          "sd": 20.57473207601984,
+          "n": 5,
+          "min": 1151.48,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.968,
+          "sd": 0.03346640106136301,
+          "n": 5,
+          "min": 0.92,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 4.768,
+          "sd": 0.6372754506490894,
+          "n": 5,
+          "min": 4.16,
+          "max": 5.66
+        },
+        "return_mean": {
+          "mean": 4.736,
+          "sd": 0.6199032182526559,
+          "n": 5,
+          "min": 4.12,
+          "max": 5.62
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.044480286977203,
+          "sd": 0.5918650766606708,
+          "n": 5,
+          "min": 3.5229158903831173,
+          "max": 4.833558216194982
+        },
+        "combined_success_rate": {
+          "mean": 0.8880000000000001,
+          "sd": 0.0626099033699941,
+          "n": 5,
+          "min": 0.78,
+          "max": 0.94
+        }
+      },
+      {
+        "step": 700000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1177.788,
+          "sd": 21.50620189619733,
+          "n": 5,
+          "min": 1151.6,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.9640000000000001,
+          "sd": 0.032863353450309996,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 4.9479999999999995,
+          "sd": 0.6062342781466585,
+          "n": 5,
+          "min": 4.3,
+          "max": 5.8
+        },
+        "return_mean": {
+          "mean": 4.912,
+          "sd": 0.5927225320501998,
+          "n": 5,
+          "min": 4.24,
+          "max": 5.74
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.206253500444174,
+          "sd": 0.5627424081449092,
+          "n": 5,
+          "min": 3.671949719907091,
+          "max": 4.972991511617937
+        },
+        "combined_success_rate": {
+          "mean": 0.8960000000000001,
+          "sd": 0.055497747702046414,
+          "n": 5,
+          "min": 0.8,
+          "max": 0.94
+        }
+      },
+      {
+        "step": 800000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1181.608,
+          "sd": 20.68341171083726,
+          "n": 5,
+          "min": 1151.48,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.968,
+          "sd": 0.036331804249169895,
+          "n": 5,
+          "min": 0.92,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.140000000000001,
+          "sd": 0.6392182725798752,
+          "n": 5,
+          "min": 4.48,
+          "max": 6.1
+        },
+        "return_mean": {
+          "mean": 5.108,
+          "sd": 0.6388427036446452,
+          "n": 5,
+          "min": 4.42,
+          "max": 6.08
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.352420414328508,
+          "sd": 0.5597535617996096,
+          "n": 5,
+          "min": 3.8256592430659926,
+          "max": 5.145421418449288
+        },
+        "combined_success_rate": {
+          "mean": 0.908,
+          "sd": 0.07014271166700069,
+          "n": 5,
+          "min": 0.8,
+          "max": 0.98
+        }
+      },
+      {
+        "step": 900000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1186.488,
+          "sd": 14.58570258849398,
+          "n": 5,
+          "min": 1166.04,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.976,
+          "sd": 0.026076809620810618,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.256,
+          "sd": 0.7599210485307012,
+          "n": 5,
+          "min": 4.64,
+          "max": 6.48
+        },
+        "return_mean": {
+          "mean": 5.232,
+          "sd": 0.7555924827577364,
+          "n": 5,
+          "min": 4.6,
+          "max": 6.46
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.431781441010302,
+          "sd": 0.653703460398018,
+          "n": 5,
+          "min": 3.937542430414121,
+          "max": 5.454545454545454
+        },
+        "combined_success_rate": {
+          "mean": 0.9400000000000001,
+          "sd": 0.03999999999999998,
+          "n": 5,
+          "min": 0.88,
+          "max": 0.98
+        }
+      },
+      {
+        "step": 1000000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1188.48,
+          "sd": 11.653840568670944,
+          "n": 5,
+          "min": 1173.8,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.976,
+          "sd": 0.026076809620810618,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.328,
+          "sd": 0.7003713300814077,
+          "n": 5,
+          "min": 4.8,
+          "max": 6.48
+        },
+        "return_mean": {
+          "mean": 5.304,
+          "sd": 0.7014841409468926,
+          "n": 5,
+          "min": 4.74,
+          "max": 6.46
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.4838285875775625,
+          "sd": 0.5952559367020532,
+          "n": 5,
+          "min": 4.05,
+          "max": 5.454545454545454
+        },
+        "combined_success_rate": {
+          "mean": 0.932,
+          "sd": 0.046043457732885346,
+          "n": 5,
+          "min": 0.86,
+          "max": 0.98
+        }
+      },
+      {
+        "step": 1100000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1178.868,
+          "sd": 20.489043901558716,
+          "n": 5,
+          "min": 1154.3,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.96,
+          "sd": 0.03741657386773942,
+          "n": 5,
+          "min": 0.92,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.272,
+          "sd": 0.6626613011184523,
+          "n": 5,
+          "min": 4.74,
+          "max": 6.36
+        },
+        "return_mean": {
+          "mean": 5.232,
+          "sd": 0.6391556930826794,
+          "n": 5,
+          "min": 4.68,
+          "max": 6.28
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.479063101538111,
+          "sd": 0.6296224477369533,
+          "n": 5,
+          "min": 4.016666666666667,
+          "max": 5.509832799099021
+        },
+        "combined_success_rate": {
+          "mean": 0.9119999999999999,
+          "sd": 0.033466401061363005,
+          "n": 5,
+          "min": 0.86,
+          "max": 0.94
+        }
+      },
+      {
+        "step": 1200000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1176.9119999999998,
+          "sd": 17.186364362482223,
+          "n": 5,
+          "min": 1156.7,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.96,
+          "sd": 0.028284271247461926,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.276,
+          "sd": 0.6863526790215071,
+          "n": 5,
+          "min": 4.7,
+          "max": 6.42
+        },
+        "return_mean": {
+          "mean": 5.236,
+          "sd": 0.674151318325493,
+          "n": 5,
+          "min": 4.64,
+          "max": 6.36
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.488687630045923,
+          "sd": 0.6388693593584707,
+          "n": 5,
+          "min": 4.0047033963293055,
+          "max": 5.550272326445924
+        },
+        "combined_success_rate": {
+          "mean": 0.916,
+          "sd": 0.03847076812334267,
+          "n": 5,
+          "min": 0.86,
+          "max": 0.96
+        }
+      },
+      {
+        "step": 1300000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1176.9119999999998,
+          "sd": 17.186364362482223,
+          "n": 5,
+          "min": 1156.7,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.96,
+          "sd": 0.028284271247461926,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.268,
+          "sd": 0.6976532089799347,
+          "n": 5,
+          "min": 4.68,
+          "max": 6.44
+        },
+        "return_mean": {
+          "mean": 5.228,
+          "sd": 0.6859446041773344,
+          "n": 5,
+          "min": 4.62,
+          "max": 6.38
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.481878892475658,
+          "sd": 0.6478562468889394,
+          "n": 5,
+          "min": 3.987662105281096,
+          "max": 5.567562894441083
+        },
+        "combined_success_rate": {
+          "mean": 0.916,
+          "sd": 0.03847076812334267,
+          "n": 5,
+          "min": 0.86,
+          "max": 0.96
+        }
+      },
+      {
+        "step": 1400000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1171.1200000000001,
+          "sd": 29.61173078359316,
+          "n": 5,
+          "min": 1122.96,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.944,
+          "sd": 0.06228964600958976,
+          "n": 5,
+          "min": 0.84,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.215999999999999,
+          "sd": 0.5829922812525051,
+          "n": 5,
+          "min": 4.66,
+          "max": 6.16
+        },
+        "return_mean": {
+          "mean": 5.16,
+          "sd": 0.5266877632905477,
+          "n": 5,
+          "min": 4.62,
+          "max": 6.0
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.465572358990529,
+          "sd": 0.6169961431485385,
+          "n": 5,
+          "min": 3.9545145960624577,
+          "max": 5.4855026002707135
+        },
+        "combined_success_rate": {
+          "mean": 0.9,
+          "sd": 0.05099019513592784,
+          "n": 5,
+          "min": 0.84,
+          "max": 0.96
+        }
+      },
+      {
+        "step": 1500000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1172.584,
+          "sd": 26.670310834334124,
+          "n": 5,
+          "min": 1130.28,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.9480000000000001,
+          "sd": 0.054037024344425186,
+          "n": 5,
+          "min": 0.86,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.252,
+          "sd": 0.6060693029679031,
+          "n": 5,
+          "min": 4.74,
+          "max": 6.26
+        },
+        "return_mean": {
+          "mean": 5.2,
+          "sd": 0.5562373594069353,
+          "n": 5,
+          "min": 4.7,
+          "max": 6.12
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.489739701334377,
+          "sd": 0.625668762974892,
+          "n": 5,
+          "min": 4.022403258655804,
+          "max": 5.5384506493966095
+        },
+        "combined_success_rate": {
+          "mean": 0.908,
+          "sd": 0.041472882706655424,
+          "n": 5,
+          "min": 0.86,
+          "max": 0.96
+        }
+      },
+      {
+        "step": 1600000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1172.604,
+          "sd": 26.676582989580986,
+          "n": 5,
+          "min": 1130.28,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.9480000000000001,
+          "sd": 0.054037024344425186,
+          "n": 5,
+          "min": 0.86,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.247999999999999,
+          "sd": 0.6103441652051734,
+          "n": 5,
+          "min": 4.72,
+          "max": 6.26
+        },
+        "return_mean": {
+          "mean": 5.196,
+          "sd": 0.5607851638551079,
+          "n": 5,
+          "min": 4.68,
+          "max": 6.12
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.486271006289337,
+          "sd": 0.6288908844807729,
+          "n": 5,
+          "min": 4.005431093007468,
+          "max": 5.5384506493966095
+        },
+        "combined_success_rate": {
+          "mean": 0.908,
+          "sd": 0.041472882706655424,
+          "n": 5,
+          "min": 0.86,
+          "max": 0.96
+        }
+      },
+      {
+        "step": 1700000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1182.24,
+          "sd": 16.936735222586442,
+          "n": 5,
+          "min": 1166.3,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.9719999999999999,
+          "sd": 0.0268328157299975,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.34,
+          "sd": 0.6931089380465385,
+          "n": 5,
+          "min": 4.72,
+          "max": 6.48
+        },
+        "return_mean": {
+          "mean": 5.311999999999999,
+          "sd": 0.6765500720567548,
+          "n": 5,
+          "min": 4.68,
+          "max": 6.42
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.521568208550769,
+          "sd": 0.6313592322781405,
+          "n": 5,
+          "min": 4.005431093007468,
+          "max": 5.556031895738661
+        },
+        "combined_success_rate": {
+          "mean": 0.9400000000000001,
+          "sd": 0.0374165738677394,
+          "n": 5,
+          "min": 0.88,
+          "max": 0.98
+        }
+      },
+      {
+        "step": 1800000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1182.24,
+          "sd": 16.936735222586442,
+          "n": 5,
+          "min": 1166.3,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.9719999999999999,
+          "sd": 0.0268328157299975,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.32,
+          "sd": 0.6688796603276258,
+          "n": 5,
+          "min": 4.72,
+          "max": 6.42
+        },
+        "return_mean": {
+          "mean": 5.292,
+          "sd": 0.6523189403964906,
+          "n": 5,
+          "min": 4.68,
+          "max": 6.36
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.504516865967894,
+          "sd": 0.6106925861724115,
+          "n": 5,
+          "min": 4.005431093007468,
+          "max": 5.504587155963303
+        },
+        "combined_success_rate": {
+          "mean": 0.9400000000000001,
+          "sd": 0.0374165738677394,
+          "n": 5,
+          "min": 0.88,
+          "max": 0.98
+        }
+      },
+      {
+        "step": 1900000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1182.24,
+          "sd": 16.936735222586442,
+          "n": 5,
+          "min": 1166.3,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.9719999999999999,
+          "sd": 0.0268328157299975,
+          "n": 5,
+          "min": 0.94,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.328,
+          "sd": 0.6726960680723504,
+          "n": 5,
+          "min": 4.74,
+          "max": 6.44
+        },
+        "return_mean": {
+          "mean": 5.3,
+          "sd": 0.6558963332722634,
+          "n": 5,
+          "min": 4.7,
+          "max": 6.38
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.511340948415918,
+          "sd": 0.6143062726658765,
+          "n": 5,
+          "min": 4.022403258655804,
+          "max": 5.521735402555088
+        },
+        "combined_success_rate": {
+          "mean": 0.9400000000000001,
+          "sd": 0.0374165738677394,
+          "n": 5,
+          "min": 0.88,
+          "max": 0.98
+        }
+      },
+      {
+        "step": 2000000,
+        "n": 5,
+        "frames_mean": {
+          "mean": 1172.8880000000001,
+          "sd": 33.11841964828638,
+          "n": 5,
+          "min": 1119.54,
+          "max": 1200.0
+        },
+        "survival_rate": {
+          "mean": 0.96,
+          "sd": 0.04898979485566356,
+          "n": 5,
+          "min": 0.88,
+          "max": 1.0
+        },
+        "oxygen_mean": {
+          "mean": 5.284000000000001,
+          "sd": 0.582992281252505,
+          "n": 5,
+          "min": 4.74,
+          "max": 6.22
+        },
+        "return_mean": {
+          "mean": 5.244,
+          "sd": 0.5428443607517719,
+          "n": 5,
+          "min": 4.7,
+          "max": 6.1
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.518164527282859,
+          "sd": 0.6283639617218317,
+          "n": 5,
+          "min": 4.022403258655804,
+          "max": 5.5558532968897945
+        },
+        "combined_success_rate": {
+          "mean": 0.9279999999999999,
+          "sd": 0.04604345773288534,
+          "n": 5,
+          "min": 0.88,
+          "max": 0.98
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "Safety-constrained checkpoint selection uses validation only; final test metrics do not select a checkpoint.",
+    "Each policy is averaged over its test episodes before aggregation across training seeds.",
+    "Flight is deterministic from its default reset; one test episode per policy is sufficient.",
+    "SD bands describe chain variation; they are not confidence intervals.",
+    "The same random baseline seeds do not create independent baseline replicates.",
+    "Low TD error under zero rewards does not establish good play or convergence.",
+    "Training time excludes validation and file export; it depends on machine and load."
+  ]
+}

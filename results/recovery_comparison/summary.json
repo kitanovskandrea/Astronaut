@@ -1,0 +1,508 @@
+{
+  "variants": {
+    "fly": {
+      "before": {
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        }
+      },
+      "after": {
+        "frames_mean": {
+          "mean": 1200.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "survival_rate": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        }
+      },
+      "change": {
+        "frames_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "survival_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        }
+      }
+    },
+    "asteroids": {
+      "before": {
+        "frames_mean": {
+          "mean": 767.79,
+          "sd": 150.42975786060418,
+          "n": 5
+        },
+        "survival_rate": {
+          "mean": 0.306,
+          "sd": 0.19488458122694058,
+          "n": 5
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        }
+      },
+      "after": {
+        "frames_mean": {
+          "mean": 1193.018,
+          "sd": 13.11913183103215,
+          "n": 5
+        },
+        "survival_rate": {
+          "mean": 0.986,
+          "sd": 0.026076809620810618,
+          "n": 5
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        }
+      },
+      "change": {
+        "frames_mean": {
+          "mean": 425.22799999999995,
+          "sd": 151.95461713946045,
+          "n": 5
+        },
+        "survival_rate": {
+          "mean": 0.6799999999999999,
+          "sd": 0.19557607215607947,
+          "n": 5
+        },
+        "oxygen_mean": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        },
+        "combined_success_rate": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "n": 5
+        }
+      }
+    },
+    "oxygen": {
+      "before": {
+        "frames_mean": {
+          "mean": 463.274,
+          "sd": 20.797344301616974,
+          "n": 5
+        },
+        "survival_rate": {
+          "mean": 0.064,
+          "sd": 0.008944271909999161,
+          "n": 5
+        },
+        "oxygen_mean": {
+          "mean": 2.1719999999999997,
+          "sd": 0.18185158784019453,
+          "n": 5
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.6963568806196205,
+          "sd": 0.4543544798073435,
+          "n": 5
+        },
+        "combined_success_rate": {
+          "mean": 0.064,
+          "sd": 0.008944271909999161,
+          "n": 5
+        }
+      },
+      "after": {
+        "frames_mean": {
+          "mean": 1185.04,
+          "sd": 12.529000359166757,
+          "n": 5
+        },
+        "survival_rate": {
+          "mean": 0.968,
+          "sd": 0.031144823004794868,
+          "n": 5
+        },
+        "oxygen_mean": {
+          "mean": 5.32,
+          "sd": 0.6090155991434044,
+          "n": 5
+        },
+        "oxygen_per_1000_frames": {
+          "mean": 4.489412240071781,
+          "sd": 0.5120403694877378,
+          "n": 5
+        },
+        "combined_success_rate": {
+          "mean": 0.932,
+          "sd": 0.028635642126552688,
+          "n": 5
+        }
+      },
+      "change": {
+        "frames_mean": {
+          "mean": 721.766,
+          "sd": 25.841542717105767,
+          "n": 5
+        },
+        "survival_rate": {
+          "mean": 0.9039999999999999,
+          "sd": 0.030495901363953776,
+          "n": 5
+        },
+        "oxygen_mean": {
+          "mean": 3.148,
+          "sd": 0.7484784566037956,
+          "n": 5
+        },
+        "oxygen_per_1000_frames": {
+          "mean": -0.20694464054784004,
+          "sd": 0.8096521005238881,
+          "n": 5
+        },
+        "combined_success_rate": {
+          "mean": 0.868,
+          "sd": 0.022803508501982723,
+          "n": 5
+        }
+      }
+    }
+  },
+  "training_seeds": [
+    11,
+    23,
+    37,
+    51,
+    79
+  ],
+  "models": [
+    {
+      "policy": "before",
+      "variant": "fly",
+      "training_seed": 11,
+      "filename": "fly_seed11.json.gz",
+      "sha256": "67d3e48e4ffe0b3ede7160e6e362e79844dccc9a9aa92f6a4677983e8235c240",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "fly",
+      "training_seed": 11,
+      "filename": "fly_seed11.json.gz",
+      "sha256": "90bb02ed5b4e4e787243da6e654b4797127812022ecf83c1e8f1245de855774e",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "asteroids",
+      "training_seed": 11,
+      "filename": "asteroids_seed11.json.gz",
+      "sha256": "3054e85b062a767fadf7634053d6de7ec143bcc16d709da1e44e68ce4188d9e2",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "asteroids",
+      "training_seed": 11,
+      "filename": "asteroids_seed11.json.gz",
+      "sha256": "2c46075b7a6a1b2a915f2437f68e9cfe87d060ebd173a07e058fff76947785d1",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "oxygen",
+      "training_seed": 11,
+      "filename": "oxygen_seed11.json.gz",
+      "sha256": "4b6a0e861df370d6ca9cebe5120932cbdb950c9b5cfa8f7511564b3c5f49801d",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "oxygen",
+      "training_seed": 11,
+      "filename": "oxygen_seed11.json.gz",
+      "sha256": "5a8cfcbf60630967fb849d95ab05c575c68c6d30cbf216180ea458e99094e63d",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "fly",
+      "training_seed": 23,
+      "filename": "fly_seed23.json.gz",
+      "sha256": "8fe6f80fb695003b6c6d50f6ae76cc3acdb5014dbd0889240da3b990bd804e60",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "fly",
+      "training_seed": 23,
+      "filename": "fly_seed23.json.gz",
+      "sha256": "9a1b63e294270d472296470a5ed8154630b5cdf6b1ceb3a0675ab66dbd12e9cc",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "asteroids",
+      "training_seed": 23,
+      "filename": "asteroids_seed23.json.gz",
+      "sha256": "3dac321e3f09c1be2e57cda1680df7d6ef3909259bbee220a9578b06248ad6c1",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "asteroids",
+      "training_seed": 23,
+      "filename": "asteroids_seed23.json.gz",
+      "sha256": "b896a82b1895c84b911e9d52b32b72f14e2b487e18cfe988325a8b59e10c2ca6",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "oxygen",
+      "training_seed": 23,
+      "filename": "oxygen_seed23.json.gz",
+      "sha256": "4eff0bbbf6b63b2084a4348b238c13ff4a0c92172227194767d661fe777ffd7e",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "oxygen",
+      "training_seed": 23,
+      "filename": "oxygen_seed23.json.gz",
+      "sha256": "6051322a0bb6adc897e12fe48f78548f08cf8386ec9bf976ce18710841cc38bf",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "fly",
+      "training_seed": 37,
+      "filename": "fly_seed37.json.gz",
+      "sha256": "1ec325761d59f577ca0a52a05433057b083500d682d4a93536b4296df217141d",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "fly",
+      "training_seed": 37,
+      "filename": "fly_seed37.json.gz",
+      "sha256": "9280954eb50bc968508a49c9cd431cb78af668292f97456526857a7ee742ebdf",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "asteroids",
+      "training_seed": 37,
+      "filename": "asteroids_seed37.json.gz",
+      "sha256": "0d804f9c92b525c853293bd15d912d6732104bea065b7b466e95cb7106b51647",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "asteroids",
+      "training_seed": 37,
+      "filename": "asteroids_seed37.json.gz",
+      "sha256": "b1d82040d4a8133858ad06407c418410717799c75f0c3b8753d2e4b3f01aa6a0",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "oxygen",
+      "training_seed": 37,
+      "filename": "oxygen_seed37.json.gz",
+      "sha256": "036d50b2adffbba2ee68d34127d9f532d2fffe95ef5103ad5b05bca489e64cd1",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "oxygen",
+      "training_seed": 37,
+      "filename": "oxygen_seed37.json.gz",
+      "sha256": "ed7c8bf1b05f7e0c1bf07a990d746aa31ba1845da9b80a783f1173c8bd7590ac",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "fly",
+      "training_seed": 51,
+      "filename": "fly_seed51.json.gz",
+      "sha256": "1ae57066884e349ef32a2e6c7cd800f90969026935ae3e3b660143f17deffc55",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "fly",
+      "training_seed": 51,
+      "filename": "fly_seed51.json.gz",
+      "sha256": "888d94dd051115d78fbfba9f51f613479121c7885830702957ff7151f2cbefe1",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "asteroids",
+      "training_seed": 51,
+      "filename": "asteroids_seed51.json.gz",
+      "sha256": "eb1275686ecbeff514066a887324fb5270e4244fbbb196b2a1bdeec4026edba4",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "asteroids",
+      "training_seed": 51,
+      "filename": "asteroids_seed51.json.gz",
+      "sha256": "111c0bfd5f67fca632ef0084bdb1332a1f1972a26d36ffefb45f27cb31be4413",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "oxygen",
+      "training_seed": 51,
+      "filename": "oxygen_seed51.json.gz",
+      "sha256": "f4a64ce55216dce63504c4cd1dd221d7054e8d9eb18fb30d9449d0e204345fc9",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "oxygen",
+      "training_seed": 51,
+      "filename": "oxygen_seed51.json.gz",
+      "sha256": "2fb056116f61eb14869ee95a8271b264cefb91e9a92de7b96ed8dc0e0f6248b5",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "fly",
+      "training_seed": 79,
+      "filename": "fly_seed79.json.gz",
+      "sha256": "8fa3d5562c007f92df6b2afd2071a5bd68be0f70a5efb2ad4612508a7224a11b",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "fly",
+      "training_seed": 79,
+      "filename": "fly_seed79.json.gz",
+      "sha256": "ddd451a5de087de1e2e26edd1aca73cd826eb063a843ac496b7d608485de3812",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "asteroids",
+      "training_seed": 79,
+      "filename": "asteroids_seed79.json.gz",
+      "sha256": "c064490c82b87be2e014c43458148b8aa2adecc980cd441538fc514b097521c7",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "asteroids",
+      "training_seed": 79,
+      "filename": "asteroids_seed79.json.gz",
+      "sha256": "3885776c0e7250e73e08e00d49df68a0bd7a223ce14dbedff4cd4ebdc68675f2",
+      "repeat": 6
+    },
+    {
+      "policy": "before",
+      "variant": "oxygen",
+      "training_seed": 79,
+      "filename": "oxygen_seed79.json.gz",
+      "sha256": "26a72779ac9e174ac317283866a452ae343654f675b2337437729f1f92f36ca9",
+      "repeat": 1
+    },
+    {
+      "policy": "after",
+      "variant": "oxygen",
+      "training_seed": 79,
+      "filename": "oxygen_seed79.json.gz",
+      "sha256": "5bde1dcfb82b0e0a0ab069307302bd8027287e572b85b16229739dec43131ab1",
+      "repeat": 6
+    }
+  ],
+  "interpretation": [
+    "Same pinned official physics and default rewards, same final episode seeds.",
+    "Each policy is frozen; results are means/sample SD of policy means, not independent training replicates per episode.",
+    "This measures the complete recovery pipeline, not the isolated causal effect of each feature, control or initialization change.",
+    "The older custom-reward/different-physics project is excluded."
+  ]
+}

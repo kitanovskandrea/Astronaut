@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/DomenSoberlFamnit/famnit-gym",
+  "commit": "0db0652ad3b8cece05d476c56637a3dcb56557cd",
+  "version": "0.2",
+  "retrieved": "2026-11-07",
+  "wheel_sha256": "f45da246d97ebdeac1eabfae2ada46b64bdf9f8adf18364661e62cb23919728f",
+  "source_sha256": {
+    "famnit_gym/envs/astronaut/astronaut_env.py": "2232a743bbf27cb88b27861451e9a08063539b2f42a457c039a96440b20b5fbd",
+    "famnit_gym/envs/astronaut/reward_function.py": "130e2fe0e0a8610f335c0384b57eb615fc0dbc78caa909366154a12efb7b844d",
+    "famnit_gym/wrappers/astronaut/asteroids.py": "f4102fb4b36d906ac00a1d2ea399d7d9a030609c3ed6054ada0ddae05a3de508",
+    "famnit_gym/wrappers/astronaut/oxygen.py": "571e91cfed55f6e52de4ab916baa3fa535e685a7c5e2d7374dd9e91a339879a2"
+  }
+}

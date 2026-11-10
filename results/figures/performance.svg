@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img">
+<title>Validation-selected policies on unseen test scenarios</title>
+<desc>Episodes averaged within each policy, then mean +/- sample SD across independent chains</desc>
+<rect width="1200" height="740" fill="#fff"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#172d45} .title{font-size:28px;font-weight:700} .subtitle{font-size:16px;fill:#526778} .axis{font-size:15px;fill:#526778} .small{font-size:14px;fill:#526778} .value{font-size:17px;font-weight:700} .panel{font-size:19px;font-weight:700}</style>
+<text x="52" y="55" class="title" text-anchor="start">Validation-selected policies on unseen test scenarios</text>
+<text x="52" y="87" class="subtitle" text-anchor="start">Episodes averaged within each policy, then mean +/- sample SD across independent chains</text>
+<rect x="803" y="110" width="19" height="14" fill="#2867c7" opacity="1"/>
+<text x="831" y="123" class="small" text-anchor="start">Selected Q policy</text>
+<rect x="1000" y="110" width="19" height="14" fill="#b7c5d2" opacity="1"/>
+<text x="1028" y="123" class="small" text-anchor="start">Random</text>
+<text x="320" y="164" class="panel" text-anchor="middle">Full-episode completion</text>
+<line x1="110" y1="560" x2="530" y2="560" stroke="#e2e9ef" stroke-width="1"/>
+<text x="98" y="565" class="axis" text-anchor="end">0%</text>
+<line x1="110" y1="487" x2="530" y2="487" stroke="#e2e9ef" stroke-width="1"/>
+<text x="98" y="492" class="axis" text-anchor="end">20%</text>
+<line x1="110" y1="414" x2="530" y2="414" stroke="#e2e9ef" stroke-width="1"/>
+<text x="98" y="419" class="axis" text-anchor="end">40%</text>
+<line x1="110" y1="341" x2="530" y2="341" stroke="#e2e9ef" stroke-width="1"/>
+<text x="98" y="346" class="axis" text-anchor="end">60%</text>
+<line x1="110" y1="268" x2="530" y2="268" stroke="#e2e9ef" stroke-width="1"/>
+<text x="98" y="273" class="axis" text-anchor="end">80%</text>
+<line x1="110" y1="195" x2="530" y2="195" stroke="#e2e9ef" stroke-width="1"/>
+<text x="98" y="200" class="axis" text-anchor="end">100%</text>
+<text x="48" y="377.5" class="axis" text-anchor="middle" transform="rotate(-90 48 377.5)">Completion (%)</text>
+<rect x="136.4" y="195" width="40.6" height="365" fill="#2867c7" opacity="1"/>
+<line x1="156.7" y1="195" x2="156.7" y2="195" stroke="#172d45" stroke-width="1.7"/>
+<line x1="151.7" y1="195" x2="161.7" y2="195" stroke="#172d45" stroke-width="1.7"/>
+<line x1="151.7" y1="195" x2="161.7" y2="195" stroke="#172d45" stroke-width="1.7"/>
+<text x="156.7" y="189" class="small" text-anchor="middle">100.0</text>
+<rect x="183" y="560" width="40.6" height="0" fill="#b7c5d2" opacity="1"/>
+<line x1="203.3" y1="560" x2="203.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="198.3" y1="560" x2="208.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="198.3" y1="560" x2="208.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<text x="203.3" y="548" class="small" text-anchor="middle">0.0</text>
+<text x="180" y="592" class="axis" text-anchor="middle">Flight</text>
+<rect x="276.4" y="200.11" width="40.6" height="359.89" fill="#2867c7" opacity="1"/>
+<line x1="296.7" y1="209.628" x2="296.7" y2="195" stroke="#172d45" stroke-width="1.7"/>
+<line x1="291.7" y1="209.628" x2="301.7" y2="209.628" stroke="#172d45" stroke-width="1.7"/>
+<line x1="291.7" y1="195" x2="301.7" y2="195" stroke="#172d45" stroke-width="1.7"/>
+<text x="296.7" y="189" class="small" text-anchor="middle">98.6</text>
+<rect x="323" y="560" width="40.6" height="0" fill="#b7c5d2" opacity="1"/>
+<line x1="343.3" y1="560" x2="343.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="338.3" y1="560" x2="348.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="338.3" y1="560" x2="348.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<text x="343.3" y="548" class="small" text-anchor="middle">0.0</text>
+<text x="320" y="592" class="axis" text-anchor="middle">+ Asteroids</text>
+<rect x="416.4" y="206.68" width="40.6" height="353.32" fill="#2867c7" opacity="1"/>
+<line x1="436.7" y1="218.048" x2="436.7" y2="195.312" stroke="#172d45" stroke-width="1.7"/>
+<line x1="431.7" y1="218.048" x2="441.7" y2="218.048" stroke="#172d45" stroke-width="1.7"/>
+<line x1="431.7" y1="195.312" x2="441.7" y2="195.312" stroke="#172d45" stroke-width="1.7"/>
+<text x="436.7" y="189" class="small" text-anchor="middle">96.8</text>
+<rect x="463" y="560" width="40.6" height="0" fill="#b7c5d2" opacity="1"/>
+<line x1="483.3" y1="560" x2="483.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="478.3" y1="560" x2="488.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="478.3" y1="560" x2="488.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<text x="483.3" y="548" class="small" text-anchor="middle">0.0</text>
+<text x="460" y="592" class="axis" text-anchor="middle">+ Oxygen</text>
+<text x="920" y="164" class="panel" text-anchor="middle">Oxygen collection</text>
+<line x1="710" y1="560" x2="1130" y2="560" stroke="#e2e9ef" stroke-width="1"/>
+<text x="698" y="565" class="axis" text-anchor="end">0</text>
+<line x1="710" y1="487" x2="1130" y2="487" stroke="#e2e9ef" stroke-width="1"/>
+<text x="698" y="492" class="axis" text-anchor="end">2</text>
+<line x1="710" y1="414" x2="1130" y2="414" stroke="#e2e9ef" stroke-width="1"/>
+<text x="698" y="419" class="axis" text-anchor="end">4</text>
+<line x1="710" y1="341" x2="1130" y2="341" stroke="#e2e9ef" stroke-width="1"/>
+<text x="698" y="346" class="axis" text-anchor="end">6</text>
+<line x1="710" y1="268" x2="1130" y2="268" stroke="#e2e9ef" stroke-width="1"/>
+<text x="698" y="273" class="axis" text-anchor="end">8</text>
+<line x1="710" y1="195" x2="1130" y2="195" stroke="#e2e9ef" stroke-width="1"/>
+<text x="698" y="200" class="axis" text-anchor="end">10</text>
+<text x="648" y="377.5" class="axis" text-anchor="middle" transform="rotate(-90 648 377.5)">Tanks / episode</text>
+<rect x="736.4" y="560" width="40.6" height="0" fill="#2867c7" opacity="1"/>
+<line x1="756.7" y1="560" x2="756.7" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="751.7" y1="560" x2="761.7" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="751.7" y1="560" x2="761.7" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<text x="756.7" y="548" class="small" text-anchor="middle">0.00</text>
+<rect x="783" y="560" width="40.6" height="0" fill="#b7c5d2" opacity="1"/>
+<line x1="803.3" y1="560" x2="803.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="798.3" y1="560" x2="808.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="798.3" y1="560" x2="808.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<text x="803.3" y="548" class="small" text-anchor="middle">0.00</text>
+<text x="780" y="592" class="axis" text-anchor="middle">Flight</text>
+<rect x="876.4" y="560" width="40.6" height="0" fill="#2867c7" opacity="1"/>
+<line x1="896.7" y1="560" x2="896.7" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="891.7" y1="560" x2="901.7" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="891.7" y1="560" x2="901.7" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<text x="896.7" y="548" class="small" text-anchor="middle">0.00</text>
+<rect x="923" y="560" width="40.6" height="0" fill="#b7c5d2" opacity="1"/>
+<line x1="943.3" y1="560" x2="943.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="938.3" y1="560" x2="948.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<line x1="938.3" y1="560" x2="948.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
+<text x="943.3" y="548" class="small" text-anchor="middle">0.00</text>
+<text x="920" y="592" class="axis" text-anchor="middle">+ Asteroids</text>
+<rect x="1016.4" y="365.82" width="40.6" height="194.18" fill="#2867c7" opacity="1"/>
+<line x1="1036.7" y1="388.049" x2="1036.7" y2="343.591" stroke="#172d45" stroke-width="1.7"/>
+<line x1="1031.7" y1="388.049" x2="1041.7" y2="388.049" stroke="#172d45" stroke-width="1.7"/>
+<line x1="1031.7" y1="343.591" x2="1041.7" y2="343.591" stroke="#172d45" stroke-width="1.7"/>
+<text x="1036.7" y="331.591" class="small" text-anchor="middle">5.32</text>
+<rect x="1063" y="557.445" width="40.6" height="2.555" fill="#b7c5d2" opacity="1"/>
+<line x1="1083.3" y1="557.445" x2="1083.3" y2="557.445" stroke="#172d45" stroke-width="1.7"/>
+<line x1="1078.3" y1="557.445" x2="1088.3" y2="557.445" stroke="#172d45" stroke-width="1.7"/>
+<line x1="1078.3" y1="557.445" x2="1088.3" y2="557.445" stroke="#172d45" stroke-width="1.7"/>
+<text x="1083.3" y="545.445" class="small" text-anchor="middle">0.07</text>
+<text x="1060" y="592" class="axis" text-anchor="middle">+ Oxygen</text>
+<text x="52" y="652" class="small" text-anchor="start">Main model = checkpoint selected with validation only; final test outcomes do not select the model.</text>
+<text x="52" y="678" class="small" text-anchor="start">Flight: one deterministic test episode. Asteroids/oxygen: 100 paired test seeds per policy.</text>
+<text x="52" y="704" class="small" text-anchor="start">Independent training chains are the replicates. Repeated random baselines are the same paired seed set.</text>
+</svg>

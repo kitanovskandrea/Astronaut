@@ -1,0 +1,69 @@
+{
+  "comparison": "Repeated sequential and parallel training under identical configurations; model bytes are unchanged despite different timings.",
+  "records": [
+    {
+      "variant": "fly",
+      "seed": 11,
+      "config_hash": "9eef8af295779c9ebf85933f90e94d868c4289822246d555056bd745788a2441",
+      "selected_sha256": "90bb02ed5b4e4e787243da6e654b4797127812022ecf83c1e8f1245de855774e",
+      "matches_prior_sequential_run": true,
+      "final_sha256_matches": true
+    },
+    {
+      "variant": "asteroids",
+      "seed": 11,
+      "config_hash": "e12ff64e014e7a382f1d29acf0e49823de2cf4dc5ccfa6c44c58dee7e5f906eb",
+      "selected_sha256": "2c46075b7a6a1b2a915f2437f68e9cfe87d060ebd173a07e058fff76947785d1",
+      "matches_prior_sequential_run": true,
+      "final_sha256_matches": true
+    },
+    {
+      "variant": "fly",
+      "seed": 23,
+      "config_hash": "9eef8af295779c9ebf85933f90e94d868c4289822246d555056bd745788a2441",
+      "selected_sha256": "9a1b63e294270d472296470a5ed8154630b5cdf6b1ceb3a0675ab66dbd12e9cc",
+      "matches_prior_sequential_run": true,
+      "final_sha256_matches": true
+    },
+    {
+      "variant": "asteroids",
+      "seed": 23,
+      "config_hash": "e12ff64e014e7a382f1d29acf0e49823de2cf4dc5ccfa6c44c58dee7e5f906eb",
+      "selected_sha256": "b896a82b1895c84b911e9d52b32b72f14e2b487e18cfe988325a8b59e10c2ca6",
+      "matches_prior_sequential_run": true,
+      "final_sha256_matches": true
+    },
+    {
+      "variant": "oxygen",
+      "seed": 23,
+      "config_hash": "16363e35ded4d78a521825a7c2087ae4d670b9006a8d775d29a69f0b0967e26a",
+      "selected_sha256": "6051322a0bb6adc897e12fe48f78548f08cf8386ec9bf976ce18710841cc38bf",
+      "matches_prior_sequential_run": true,
+      "final_sha256_matches": true
+    },
+    {
+      "variant": "fly",
+      "seed": 37,
+      "config_hash": "9eef8af295779c9ebf85933f90e94d868c4289822246d555056bd745788a2441",
+      "selected_sha256": "9280954eb50bc968508a49c9cd431cb78af668292f97456526857a7ee742ebdf",
+      "matches_prior_sequential_run": true,
+      "final_sha256_matches": true
+    },
+    {
+      "variant": "asteroids",
+      "seed": 37,
+      "config_hash": "e12ff64e014e7a382f1d29acf0e49823de2cf4dc5ccfa6c44c58dee7e5f906eb",
+      "selected_sha256": "b1d82040d4a8133858ad06407c418410717799c75f0c3b8753d2e4b3f01aa6a0",
+      "matches_prior_sequential_run": true,
+      "final_sha256_matches": true
+    },
+    {
+      "variant": "fly",
+      "seed": 51,
+      "config_hash": "9eef8af295779c9ebf85933f90e94d868c4289822246d555056bd745788a2441",
+      "selected_sha256": "888d94dd051115d78fbfba9f51f613479121c7885830702957ff7151f2cbefe1",
+      "matches_prior_sequential_run": true,
+      "final_sha256_matches": true
+    }
+  ]
+}

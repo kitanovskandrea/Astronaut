@@ -1,0 +1,4 @@
+# Official, unmodified course package, built from the recorded commit.
+./vendor/famnit_gym-0.2-py3-none-any.whl
+# Lock the transitive dependency not pinned by the course package.
+cloudpickle==3.1.2
