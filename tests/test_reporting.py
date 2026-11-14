@@ -122,7 +122,7 @@ class ReportingTests(unittest.TestCase):
             content = pdf.read_bytes()
             self.assertTrue(content.startswith(b"%PDF-1.4"))
             self.assertTrue(content.endswith(b"%%EOF\n"))
-            self.assertIn(b"No shaping.", content)
+            self.assertIn(b"alpha * error", content)
             self.assertIn(b"103,680 states", content)
 
     def test_nonfinite_metrics_cannot_be_published(self):

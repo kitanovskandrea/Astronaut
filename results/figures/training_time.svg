@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img">
-<title>Training cost of the learned curriculum</title>
-<desc>Mean +/- sample SD across independent chains; stage allocations differ</desc>
+<title>How much training time each stage needs</title>
+<desc>Bars show mean +/- sample SD across five agents; the stages use different training budgets</desc>
 <rect width="1200" height="740" fill="#fff"/>
 <style>text{font-family:Arial,Helvetica,sans-serif;fill:#172d45} .title{font-size:28px;font-weight:700} .subtitle{font-size:16px;fill:#526778} .axis{font-size:15px;fill:#526778} .small{font-size:14px;fill:#526778} .value{font-size:17px;font-weight:700} .panel{font-size:19px;font-weight:700}</style>
-<text x="52" y="55" class="title" text-anchor="start">Training cost of the learned curriculum</text>
-<text x="52" y="87" class="subtitle" text-anchor="start">Mean +/- sample SD across independent chains; stage allocations differ</text>
-<text x="320" y="156" class="panel" text-anchor="middle">Incremental stage training</text>
+<text x="52" y="55" class="title" text-anchor="start">How much training time each stage needs</text>
+<text x="52" y="87" class="subtitle" text-anchor="start">Bars show mean +/- sample SD across five agents; the stages use different training budgets</text>
+<text x="320" y="156" class="panel" text-anchor="middle">Learning this stage</text>
 <line x1="110" y1="560" x2="530" y2="560" stroke="#e2e9ef" stroke-width="1"/>
 <text x="98" y="565" class="axis" text-anchor="end">0</text>
 <line x1="110" y1="487" x2="530" y2="487" stroke="#e2e9ef" stroke-width="1"/>
@@ -40,7 +40,7 @@
 <text x="460" y="386.892" class="small" text-anchor="middle">432.6 +/- 0.6</text>
 <text x="460" y="591" class="axis" text-anchor="middle">+ Oxygen</text>
 <text x="460" y="619" class="small" text-anchor="middle">2M decisions</text>
-<text x="920" y="156" class="panel" text-anchor="middle">Including prerequisite training</text>
+<text x="920" y="156" class="panel" text-anchor="middle">Including the earlier stages</text>
 <line x1="710" y1="560" x2="1130" y2="560" stroke="#e2e9ef" stroke-width="1"/>
 <text x="698" y="565" class="axis" text-anchor="end">0</text>
 <line x1="710" y1="487" x2="1130" y2="487" stroke="#e2e9ef" stroke-width="1"/>
@@ -75,7 +75,7 @@
 <text x="1060" y="304.95" class="small" text-anchor="middle">656.9 +/- 0.7</text>
 <text x="1060" y="591" class="axis" text-anchor="middle">+ Oxygen</text>
 <text x="1060" y="619" class="small" text-anchor="middle">2M decisions</text>
-<text x="52" y="652" class="small" text-anchor="start">Flight starts from zero; asteroid and oxygen stages inherit learned values from the same chain&#x27;s selected parent.</text>
-<text x="52" y="678" class="small" text-anchor="start">Different budgets and transferred learning: this is not an equal-budget from-zero comparison or time to convergence.</text>
-<text x="52" y="704" class="small" text-anchor="start">Timers exclude validation/testing and export. Cumulative cost includes full allocated prerequisite training.</text>
+<text x="52" y="652" class="small" text-anchor="start">Flight starts with an empty table. Asteroids builds on flight; oxygen builds on avoidance.</text>
+<text x="52" y="678" class="small" text-anchor="start">The stages receive different numbers of updates, so these times describe this training setup.</text>
+<text x="52" y="704" class="small" text-anchor="start">Times count learning only, excluding tests and file saving. Five agents ran in parallel; totals include earlier stages.</text>
 </svg>

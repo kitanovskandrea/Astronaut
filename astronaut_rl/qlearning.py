@@ -186,13 +186,3 @@ class QLearner:
             raise ValueError("malformed Q-learning checkpoint") from error
         return learner
 
-
-def linear_epsilon(episode, decay_episodes, start=1.0, end=0.05):
-    """Linearly decay exploration, clamping at the final value."""
-    if isinstance(episode, bool) or not isinstance(episode, int) or episode < 0:
-        raise ValueError("episode must be a nonnegative integer")
-    if isinstance(decay_episodes, bool) or not isinstance(decay_episodes, int) or decay_episodes < 1:
-        raise ValueError("decay_episodes must be a positive integer")
-    start, end = _probability(start, "start"), _probability(end, "end")
-    fraction = min(1.0, episode / decay_episodes)
-    return start + fraction * (end - start)

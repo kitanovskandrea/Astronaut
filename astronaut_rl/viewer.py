@@ -31,55 +31,51 @@ ASSETS = frozenset(("ground.png", "ceiling.png", "astronaut_idle.png",
 HTML = r'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Astronaut - autonomous Q-learning</title>
+<title>Astronaut</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0b1424;color:#eaf0fa;font:16px system-ui,sans-serif}
-main{max-width:1220px;margin:auto;padding:26px}h1{font-size:32px;margin:0 0 6px}
-p{color:#b6c6de;line-height:1.5;margin:0 0 20px}.top{display:flex;justify-content:space-between;gap:20px;align-items:center}
-.badge{color:#7ee1c7;border:1px solid #32665c;border-radius:30px;padding:8px 14px;white-space:nowrap}
-.controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:18px 0}
-button,input{font:inherit;color:inherit;background:#1c2d47;border:1px solid #39506f;border-radius:8px;padding:10px 15px}
+*{box-sizing:border-box}body{margin:0;background:#0b1424;color:#eaf0fa;font:14px system-ui,sans-serif}
+main{max-width:1040px;height:100vh;height:100dvh;margin:auto;padding:12px 16px;display:flex;flex-direction:column;gap:10px}h1{font-size:25px;margin:0}
+h1,.controls,.stats,.learning,#message{flex-shrink:0}
+.controls{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+button,input{font:inherit;color:inherit;background:#1c2d47;border:1px solid #39506f;border-radius:8px;padding:7px 10px}
 button{cursor:pointer}button:hover{background:#294469}button.active{background:#326bd2;border-color:#679af3}
-input{width:125px}label{display:flex;gap:9px;align-items:center;margin-left:10px;color:#c8d6e9}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
-.stat{background:#152238;border:1px solid #233653;border-radius:10px;padding:14px}
-.stat span{font-size:13px;color:#a4b8d5;display:block;margin-bottom:5px}.stat strong{font-size:21px}
-.learning{padding:16px;background:#152238;border:1px solid #304c70;border-radius:10px;margin:15px 0}.learning[hidden]{display:none}.learning progress{width:100%;height:16px;accent-color:#65b2ff}.learning-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0;font-size:14px;color:#c6d7ef}.learning-grid strong{display:block;font-size:20px;margin-top:5px}.explain{padding:12px 16px;border-left:3px solid #67acff;background:#152238;color:#c7daf4;font-size:14px;line-height:1.5}.screen{position:relative;background:#000;border:1px solid #354765;border-radius:12px;overflow:hidden;min-height:240px}
-canvas{display:block;width:100%;aspect-ratio:3/2;object-fit:contain}#fps{position:absolute;right:10px;bottom:10px;font:12px system-ui,sans-serif;color:#c3d2e5;background:#0b1424bd;border-radius:5px;padding:4px 7px;pointer-events:none}#message{margin:15px 0;color:#c3d8f4;min-height:24px}
-.foot{font-size:13px;color:#8da4c2}#stop{margin-left:auto;background:#422735;border-color:#794454}
-@media(max-width:700px){main{padding:15px}.top{display:block}.badge{display:inline-block;margin:10px 0}.stats{grid-template-columns:repeat(2,1fr)}h1{font-size:25px}label{margin-left:0}}
+input{width:110px}label{display:flex;gap:6px;align-items:center;color:#c8d6e9}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.stat{background:#152238;border:1px solid #233653;border-radius:10px;padding:8px 12px}
+.stat span{font-size:11px;color:#a4b8d5;display:block;margin-bottom:3px}.stat strong{font-size:17px}
+.learning{padding:10px;background:#152238;border:1px solid #304c70;border-radius:10px}.learning[hidden]{display:none}.learning progress{width:100%;height:12px;accent-color:#65b2ff}.learning-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px;font-size:12px;color:#c6d7ef}.learning-grid strong{display:block;font-size:16px;margin-top:3px}.screen{flex:1;min-height:0;background:#000;border:1px solid #354765;border-radius:12px;overflow:hidden}
+canvas{display:block;width:100%;height:100%;object-fit:contain}#message{color:#c3d8f4}#message:empty{display:none}
+#stop{margin-left:auto;background:#422735;border-color:#794454}
+@media(max-width:700px){main{padding:10px}.stats{grid-template-columns:repeat(2,1fr)}}
 </style></head><body><main>
-<div class="top"><div><h1>Astronaut</h1><p>Learn flight, then asteroid avoidance, then safe oxygen collection.</p></div><div class="badge">Autonomous AI - group 7</div></div>
+<h1>Astronaut</h1>
 <div class="controls">
 <button data-variant="fly">Flight</button><button data-variant="asteroids">+ Asteroids</button><button data-variant="oxygen">+ Oxygen</button>
 <label>Episode seed <input id="seed" type="number" min="0" max="4294967295" value="__SEED__"></label>
 <button id="train">Train from scratch</button><button id="again">Watch trained AI</button><button id="stop">Stop server</button></div>
-<div class="explain">The AI chooses thrust or coast from what it learned. It uses its height, speed and approaching objects to avoid asteroids and collect oxygen. Training uses the official rewards: +1 for a tank, -1 for a collision, and 0 otherwise.</div>
-<section class="learning" id="learning" hidden><strong id="learning-title">Learning by trial and error...</strong><progress id="progress" max="100" value="0"></progress><div class="learning-grid"><div>Q updates<strong id="updates">0</strong></div><div>Episodes tried<strong id="attempts">0</strong></div><div>Exploration<strong id="epsilon">80%</strong></div><div>Recent TD loss<strong id="loss">-</strong></div></div><span id="learning-message">Training starts with an empty Q table. The new agent will fly here when ready.</span></section>
+<section class="learning" id="learning" hidden><strong id="learning-title">Training</strong><progress id="progress" max="100" value="0"></progress><div class="learning-grid"><div>Q updates<strong id="updates">0</strong></div><div>Episodes<strong id="attempts">0</strong></div><div>Exploration<strong id="epsilon">80%</strong></div><div>TD loss<strong id="loss">-</strong></div></div></section>
 <div class="stats"><div class="stat"><span>Status</span><strong id="phase">Starting...</strong></div>
 <div class="stat"><span>Game time</span><strong id="elapsed">0.0 / 20 s</strong></div>
 <div class="stat"><span>Oxygen collected</span><strong id="oxygen">0</strong></div>
 <div class="stat"><span>Episode reward</span><strong id="reward">0.00</strong></div></div>
-<div class="screen"><canvas id="game" width="1200" height="800" aria-label="Live Astronaut course game controlled by the AI"></canvas><span id="fps">Connecting...</span></div>
-<div id="message">Loading the saved agent and game graphics...</div>
-<p class="foot">The AI controls every movement. Each curriculum starts with flight; later stages inherit learned values and must pass their checks. Watch trained AI uses the selected policy. New models and logs are saved separately under runs/.</p>
+<div class="screen"><canvas id="game" width="1200" height="800" aria-label="Astronaut game"></canvas></div>
+<div id="message" role="alert"></div>
 </main><script>
 const token=__TOKEN__;let variant=__VARIANT__,refreshing=false,stopped=false;
 const labels={fly:'Flight',asteroids:'Asteroids',oxygen:'Asteroids + oxygen'};
 const canvas=document.querySelector('#game'),ctx=canvas.getContext('2d'),sprites={},buffer=[];
 const spriteNames=['ground.png','ceiling.png','astronaut_idle.png','astronaut_thrust.png','asteroid_1.png','asteroid_2.png','asteroid_3.png','oxygen.png'];
 let generation=null,clockOffset=null,raf=null,latestScene=null,assetsReady=false,lastPaint=0;
-let fpsStart=performance.now(),paintCount=0,streamCount=0,lastMetrics=performance.now();
 const delayMs=50;
 const assetsLoaded=Promise.all(spriteNames.map(name=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{sprites[name]=image;resolve();};image.onerror=reject;image.src='/assets/'+name;})));
 function beginDraw(){if(assetsReady&&raf===null)raf=requestAnimationFrame(draw);}
 assetsLoaded.then(()=>{assetsReady=true;beginDraw();}).catch(()=>{document.querySelector('#message').textContent='The original game graphics could not be loaded.';});
 function ingest(scene){
- if(!scene){buffer.length=0;latestScene=null;generation=null;if(raf!==null)cancelAnimationFrame(raf);raf=null;ctx.clearRect(0,0,1200,800);document.querySelector('#fps').textContent='Training';return;}
+ if(!scene){buffer.length=0;latestScene=null;generation=null;if(raf!==null)cancelAnimationFrame(raf);raf=null;ctx.clearRect(0,0,1200,800);return;}
  const now=performance.now();
- if(scene.generation!==generation){generation=scene.generation;buffer.length=0;clockOffset=now-scene.timestamp;fpsStart=now;lastMetrics=now;paintCount=0;streamCount=0;}
+ if(scene.generation!==generation){generation=scene.generation;buffer.length=0;clockOffset=now-scene.timestamp;}
  else clockOffset=Math.min(clockOffset,now-scene.timestamp);
- latestScene=scene;buffer.push(scene);if(buffer.length>12)buffer.splice(0,buffer.length-12);streamCount++;beginDraw();
+ latestScene=scene;buffer.push(scene);if(buffer.length>12)buffer.splice(0,buffer.length-12);beginDraw();
 }
 function draw(now){
  raf=null;if(!assetsReady||!buffer.length)return;
@@ -93,23 +89,19 @@ function draw(now){
  for(const [name,y] of [['ground.png',700],['ceiling.png',0]]){ctx.drawImage(sprites[name],landscape,y);ctx.drawImage(sprites[name],landscape-1200,y);}
  const later=new Map(b.entities.map(e=>[e.id,e]));
  for(const entity of a.entities){const next=later.get(entity.id);const x=next?entity.x+ratio*(next.x-entity.x):entity.x;const y=next?entity.y+ratio*(next.y-entity.y):entity.y;ctx.drawImage(sprites[entity.sprite],x,y,entity.width,entity.height);}
- paintCount++;
  const finished=!latestScene.playing&&target>=latestScene.timestamp,display=finished?latestScene:a;
  if(finished||now-lastPaint>100){document.querySelector('#elapsed').textContent=(display.frames/60).toFixed(1)+' / 20 s';document.querySelector('#oxygen').textContent=display.oxygen;document.querySelector('#reward').textContent=display.reward.toFixed(2);lastPaint=now;}
- if(now-lastMetrics>=500){document.querySelector('#fps').textContent=Math.round(paintCount*1000/(now-fpsStart))+' canvas fps · '+Math.round(streamCount*1000/(now-fpsStart))+' frames/s';paintCount=0;streamCount=0;fpsStart=now;lastMetrics=now;}
  // No extrapolation: after the final buffered scene, stop scheduling paints.
  if(latestScene.playing||target<latestScene.timestamp+20)raf=requestAnimationFrame(draw);
- else document.querySelector('#fps').textContent='Episode ended';
 }
 const events=new EventSource('/events');
 events.addEventListener('scene',event=>ingest(JSON.parse(event.data)));
-events.onerror=()=>{if(!stopped)document.querySelector('#fps').textContent='Reconnecting...';};
 async function command(path,body={}){const r=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-Astronaut-Token':token},body:JSON.stringify(body)});if(!r.ok)throw Error(await r.text());}
-async function start(v,train=false){try{await command(train?'/train':'/start',{variant:v,seed:Number(document.querySelector('#seed').value)});variant=v;document.querySelector('#message').textContent=train?'Starting a fresh Q-learning experiment...':'Starting '+labels[v]+'...';}catch(e){document.querySelector('#message').textContent=e.message;}}
+async function start(v,train=false){try{await command(train?'/train':'/start',{variant:v,seed:Number(document.querySelector('#seed').value)});variant=v;document.querySelector('#message').textContent='';}catch(e){document.querySelector('#message').textContent=e.message;}}
 document.querySelectorAll('[data-variant]').forEach(b=>b.onclick=()=>start(b.dataset.variant));
 document.querySelector('#again').onclick=()=>start(variant);
 document.querySelector('#train').onclick=()=>start(variant,true);
-document.querySelector('#stop').onclick=async()=>{await command('/stop');stopped=true;events.close();if(raf!==null)cancelAnimationFrame(raf);raf=null;document.querySelector('#fps').textContent='Stopped';document.querySelector('#phase').textContent='Stopped';document.querySelector('#message').textContent='Replay server stopped. You can close this tab.';};
+document.querySelector('#stop').onclick=async()=>{await command('/stop');stopped=true;events.close();if(raf!==null)cancelAnimationFrame(raf);raf=null;document.querySelector('#phase').textContent='Stopped';document.querySelector('#message').textContent='';};
 async function refresh(){if(refreshing||stopped)return;refreshing=true;try{
  const r=await fetch('/status',{cache:'no-store'});if(!r.ok)throw Error('Cannot read replay status');const s=await r.json();variant=s.variant;
  document.querySelector('#phase').textContent=s.phase;
@@ -122,8 +114,7 @@ async function refresh(){if(refreshing||stopped)return;refreshing=true;try{
  document.querySelector('#epsilon').textContent=(100*l.epsilon).toFixed(1)+'%';
  document.querySelector('#loss').textContent=l.td_mse===null?'-':l.td_mse.toFixed(3);
  const stageName=labels[l.variant]||'Flight';
- document.querySelector('#learning-title').textContent=l.phase==='complete'?'Curriculum completed - watching the learned policy':l.phase==='blocked'?'Stage not passed: '+stageName:l.phase==='validating'?'Checking '+stageName+'...':l.phase==='evaluating'?'Testing the selected policy...':l.phase==='error'?'Training could not finish':'Learning '+stageName+' by trial and error...';
- document.querySelector('#learning-message').textContent=l.phase==='complete'?'The selected policy passed its behaviour checks. Its Q table controls every movement.':l.phase==='blocked'?(l.reason||'This stage has not met its behaviour checks. Later stages will not start.'):'The AI learns flight, then avoidance, then oxygen collection. It advances only after the current stage passes its checks.';
+ document.querySelector('#learning-title').textContent=l.phase==='complete'?'Complete':l.phase==='blocked'?'Stage not passed: '+stageName:l.phase==='validating'?'Validating: '+stageName:l.phase==='evaluating'?'Testing':l.phase==='error'?'Training failed':'Training: '+stageName;
  }
  document.querySelectorAll('[data-variant]').forEach(b=>b.classList.toggle('active',b.dataset.variant===s.variant));
  }catch(e){document.querySelector('#message').textContent='The local replay server is unavailable. Check the terminal for details.';}finally{refreshing=false;}}
@@ -161,7 +152,7 @@ class Replay:
         self.stopped = False
         self.data = {"variant": self.variant, "phase": "Starting", "frames": 0,
                      "oxygen": 0, "reward": 0.0, "frame_id": 0,
-                     "message": "Loading the actual course game...", "learning": None}
+                     "message": "", "learning": None}
 
     def _model_for(self, variant):
         path = self.model_path
@@ -191,7 +182,7 @@ class Replay:
         self.next_frame_at = time.perf_counter() + 1 / 60
         with self.changed:
             self.data.update(variant=variant, phase="Playing", frames=0, oxygen=0,
-                             reward=0.0, learning=None, message="The learned Q table is choosing every action.")
+                             reward=0.0, learning=None, message="")
             self._publish_locked()
 
     def _wrapper(self, field):
@@ -277,9 +268,9 @@ class Replay:
             if terminated or truncated:
                 self.running = False
                 if terminated:
-                    self.data.update(phase="Collision", message="Episode ended: " + info["collision"] + ". Watch another attempt or train a fresh agent.")
+                    self.data.update(phase="Collision", message="")
                 else:
-                    self.data.update(phase="Survived", message="The agent survived the full episode. Watch another attempt or select another game.")
+                    self.data.update(phase="Survived", message="")
             self._publish_locked()
 
     def start_training(self, variant, seed):
@@ -299,7 +290,7 @@ class Replay:
             self.data["frame_id"] += 1
             self.data.update(variant=variant, phase="Training", frames=0, oxygen=0,
                              reward=0.0, learning=self.training_job.snapshot(),
-                             message="The AI is learning from repeated attempts. Its new policy will fly automatically when training finishes.")
+                             message="")
             self.changed.notify_all()
 
     def poll_training(self):
@@ -327,7 +318,7 @@ class Replay:
             self.start(self.variant, self.initial_seed)
             with self.lock:
                 self.data["learning"] = progress
-                self.data["message"] = "The curriculum passed its behaviour checks. The selected learned Q table controls every movement."
+                self.data["message"] = ""
 
     def advance(self):
         # A single Q decision still holds for the model's action repeat. The
@@ -429,7 +420,7 @@ def handler_for(replay):
                     if variant not in VARIANTS or type(seed) is not int or not 0 <= seed < 2 ** 32:
                         raise ValueError("Choose a game and a valid integer seed")
                     if data.get("mode", "ai") != "ai":
-                        raise ValueError("The AI controls every movement; player control is disabled")
+                        raise ValueError("Player control is disabled")
                     replay.commands.put(("train" if self.path == "/train" else "start", variant, seed))
                 elif self.path == "/stop":
                     replay.commands.put(("stop",))
@@ -456,7 +447,6 @@ def serve(model_path, seed, episodes=1, port=8765, open_browser=True,
     url = f"http://127.0.0.1:{server.server_port}/"
     threading.Thread(target=server.serve_forever, daemon=True).start()
     print(f"Astronaut replay: {url}", flush=True)
-    print("The AI controls the game. Use Train from scratch to learn a new policy or Watch trained AI to replay it.", flush=True)
     if open_browser:
         threading.Thread(target=webbrowser.open, args=(url,), daemon=True).start()
     try:

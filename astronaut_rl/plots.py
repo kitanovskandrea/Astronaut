@@ -7,32 +7,17 @@ a policy are averaged first; SD is not a confidence interval.
 """
 
 import argparse
-import csv
 import html
 import json
 import math
 from pathlib import Path
-import statistics
 
 from .report import aggregate, groups_for, training_curves
 
 
-ORDER = ("fly", "asteroids", "oxygen")
 LABELS = {"fly": "Flight", "asteroids": "+ Asteroids", "oxygen": "+ Oxygen"}
 COLORS = {"fly": "#2867c7", "asteroids": "#008d82", "oxygen": "#d55b36"}
-WIDTH, HEIGHT = 1200, 740
 INK, MUTED, GRID = "#172d45", "#526778", "#e2e9ef"
-
-
-def _number(value, name):
-    value = float(value)
-    if not math.isfinite(value):
-        raise ValueError("%s must be finite" % name)
-    return value
-
-
-def _mean(values):
-    return statistics.fmean(values)
 
 
 def _nice_ceiling(value):
@@ -152,15 +137,15 @@ def curve_plot(series, title, ylabel, path, maximum=None, percent=False, footer=
 
 
 def performance_plot(summary, path):
-    svg = SVG("Validation-selected policies on unseen test scenarios", "Episodes averaged within each policy, then mean +/- sample SD across independent chains")
+    svg = SVG("How the trained agents perform in new games", "Results average five trained agents; error bars show sample SD between agents")
     svg.rect(803, 110, 19, 14, "#2867c7")
-    svg.text(831, 123, "Selected Q policy", cls="small")
+    svg.text(831, 123, "Trained agent", cls="small")
     svg.rect(1000, 110, 19, 14, "#b7c5d2")
-    svg.text(1028, 123, "Random", cls="small")
+    svg.text(1028, 123, "Random actions", cls="small")
     variants = list(summary["variants"])
     for panel_index, (title, metric, scale, maximum) in enumerate((
-            ("Full-episode completion", "survival_rate", 100, 100),
-            ("Oxygen collection", "oxygen_mean", 1, None))):
+            ("Games completed without a collision", "survival_rate", 100, 100),
+            ("Oxygen tanks collected per game", "oxygen_mean", 1, None))):
         left, top, width, height = 110 + panel_index * 600, 195, 420, 365
         values = [entry[policy][metric] for entry in summary["variants"].values() for policy in ("greedy", "random")]
         maximum = maximum or _nice_ceiling(max((v["mean"] + v["sd"]) * scale for v in values) * 1.25)
@@ -185,17 +170,17 @@ def performance_plot(summary, path):
                 svg.line(xx + bar_width / 2, ymap(low), xx + bar_width / 2, ymap(high), stroke=INK, width=1.7)
                 for bound in (low, high):
                     svg.line(xx + bar_width / 2 - 5, ymap(bound), xx + bar_width / 2 + 5, ymap(bound), stroke=INK, width=1.7)
-                svg.text(xx + bar_width / 2, max(top - 6, ymap(high) - 12), "%.1f" % value if scale == 100 else "%.2f" % value, cls="small", anchor="middle")
+                svg.text(xx + bar_width / 2, max(top - 6, ymap(high) - 12), "%.1f%%" % value if scale == 100 else "%.2f" % value, cls="small", anchor="middle")
             svg.text(center, top + height + 32, LABELS[variant], anchor="middle")
-    svg.text(52, 652, "Main model = checkpoint selected with validation only; final test outcomes do not select the model.", cls="small")
-    svg.text(52, 678, "Flight: one deterministic test episode. Asteroids/oxygen: 100 paired test seeds per policy.", cls="small")
-    svg.text(52, 704, "Independent training chains are the replicates. Repeated random baselines are the same paired seed set.", cls="small")
+    svg.text(52, 652, "Models are chosen using validation games, then tested on separate games without further learning.", cls="small")
+    svg.text(52, 678, "Flight uses one deterministic game per agent; the other tasks use 100 new games per agent.", cls="small")
+    svg.text(52, 704, "The random player uses the same test games. Repeating that baseline does not create new independent agents.", cls="small")
     svg.save(path)
 
 
 def time_plot(summary, path):
-    svg = SVG("Training cost of the learned curriculum", "Mean +/- sample SD across independent chains; stage allocations differ")
-    for panel_index, (key, title) in enumerate((("stage_cost", "Incremental stage training"), ("cumulative_cost", "Including prerequisite training"))):
+    svg = SVG("How much training time each stage needs", "Bars show mean +/- sample SD across five agents; the stages use different training budgets")
+    for panel_index, (key, title) in enumerate((("stage_cost", "Learning this stage"), ("cumulative_cost", "Including the earlier stages"))):
         left, top, width, height = 110 + panel_index * 600, 195, 420, 365
         maximum = _nice_ceiling(max(entry[key]["train_seconds"]["mean"] + entry[key]["train_seconds"]["sd"] for entry in summary["variants"].values()) * 1.22)
         ymap = lambda value: top + height * (1 - value / maximum)
@@ -219,9 +204,9 @@ def time_plot(summary, path):
             svg.text(center, ymap(high) - 15, "%.1f +/- %.1f" % (stat["mean"], stat["sd"]), cls="small", anchor="middle")
             svg.text(center, top + height + 31, LABELS[variant], anchor="middle")
             svg.text(center, top + height + 59, _label(entry["budget"]["mean"]) + " decisions", cls="small", anchor="middle")
-    svg.text(52, 652, "Flight starts from zero; asteroid and oxygen stages inherit learned values from the same chain's selected parent.", cls="small")
-    svg.text(52, 678, "Different budgets and transferred learning: this is not an equal-budget from-zero comparison or time to convergence.", cls="small")
-    svg.text(52, 704, "Timers exclude validation/testing and export. Cumulative cost includes full allocated prerequisite training.", cls="small")
+    svg.text(52, 652, "Flight starts with an empty table. Asteroids builds on flight; oxygen builds on avoidance.", cls="small")
+    svg.text(52, 678, "The stages receive different numbers of updates, so these times describe this training setup.", cls="small")
+    svg.text(52, 704, "Times count learning only, excluding tests and file saving. Five agents ran in parallel; totals include earlier stages.", cls="small")
     svg.save(path)
 
 
@@ -233,11 +218,11 @@ def build_all(results, out):
     groups = groups_for(manifest["records"])
     out.mkdir(parents=True, exist_ok=True)
     paths = [out / name for name in ("loss.svg", "survival.svg", "completion.svg", "oxygen.svg", "coverage.svg", "performance.svg", "training_time.svg")]
-    curve_plot(training_curves(results, groups), "TD residual during learning", "Mean squared TD residual", paths[0],
+    curve_plot(training_curves(results, groups), "How the Q-value prediction error changes during training", "Mean squared TD residual", paths[0],
                footer="Pre-update squared Bellman residuals averaged in fixed-decision blocks; low zero-reward loss can coexist with poor play.")
     for path, title, metric, ylabel, scale, maximum, variants in (
             (paths[1], "Validation survival learning curve", "frames_mean", "Survived physics steps", 1, 1200, tuple(groups)),
-            (paths[2], "Validation full-episode success curve", "survival_rate", "Completion (%)", 100, 100, tuple(groups)),
+            (paths[2], "How often the agent completes a full validation game", "survival_rate", "Completion (%)", 100, 100, tuple(groups)),
             (paths[3], "Validation oxygen collection curve", "oxygen_mean", "Tanks / episode", 1, None, ("oxygen",))):
         selected = {variant: [{"step": point["step"], **{key: value * scale if key in ("mean", "sd", "min", "max") else value for key, value in point[metric].items()}}
                               for point in summary["validation_curves"][variant]] for variant in variants if variant in groups}

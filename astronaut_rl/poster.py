@@ -4,10 +4,8 @@ This small vector-PDF writer keeps the submitted program free of extra plotting
 or document libraries. It uses the standard PDF base fonts and no raster plots.
 """
 import argparse
-import csv
 import json
-import math
-import statistics
+import struct
 from pathlib import Path
 
 from .report import aggregate, groups_for, training_curves
@@ -26,6 +24,7 @@ def rgb(h):
 class PDF:
     def __init__(self):
         self.commands = []
+        self.images = []
 
     def rect(self, x, y, w, h, color):
         self.commands.append(f"{rgb(color)} rg {x:.2f} {H-y-h:.2f} {w:.2f} {h:.2f} re f")
@@ -65,20 +64,47 @@ class PDF:
                 y += leading
         return y
 
+    def image(self, path, x, y, width):
+        """Embed a prepared RGB JPEG using the standard PDF image format."""
+        data = Path(path).read_bytes()
+        if data[:2] != b"\xff\xd8":
+            raise ValueError("The poster logo must be a JPEG")
+        position = 2
+        while position < len(data):
+            marker = data[position + 1]
+            length = struct.unpack_from(">H", data, position + 2)[0]
+            if marker in (0xC0, 0xC1, 0xC2):
+                bits, pixels_h, pixels_w, channels = struct.unpack_from(">BHHB", data, position + 4)
+                if bits != 8 or channels != 3:
+                    raise ValueError("The poster logo must use 8-bit RGB")
+                break
+            position += 2 + length
+        else:
+            raise ValueError("Cannot read JPEG dimensions")
+        name = "Im" + str(len(self.images))
+        self.images.append((data, pixels_w, pixels_h))
+        height = width * pixels_h / pixels_w
+        self.commands.append(f"q {width:.2f} 0 0 {height:.2f} {x:.2f} {H-y-height:.2f} cm /{name} Do Q")
+
     def save(self, path):
         stream = ("\n".join(self.commands) + "\n").encode("latin1")
+        image_refs = " ".join(f"/Im{i} {10+i} 0 R" for i in range(len(self.images)))
         objects = [
             b"<< /Type /Catalog /Pages 2 0 R >>",
             b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
             (f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 {W} {H}] "
-             "/Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R /F4 7 0 R >> >> /Contents 8 0 R >>").encode(),
+             f"/Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R /F4 7 0 R >> /XObject << {image_refs} >> >> /Contents 8 0 R >>").encode(),
             b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>",
             b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>",
             b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>",
             b"<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>",
             f"<< /Length {len(stream)} >>\nstream\n".encode() + stream + b"endstream",
-            b"<< /Title (Reinforcement learning with the Astronaut) /Author (Andrea Kitanovska; Hristijan Kochovski) /Subject (Group 7 - Intelligent Systems Seminar 1) >>",
+            b"<< /Title (Reinforcement learning with the Astronaut) /Author (Andrea Kitanovska; Hristijan Kochovski) /Subject (Intelligent Systems Seminar 1) >>",
         ]
+        for content, width, height in self.images:
+            header = (f"<< /Type /XObject /Subtype /Image /Width {width} /Height {height} "
+                      f"/ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length {len(content)} >>\nstream\n").encode()
+            objects.append(header + content + b"\nendstream")
         data = bytearray(b"%PDF-1.4\n%\xe2\xe3\xcf\xd3\n")
         offsets = [0]
         for i, obj in enumerate(objects, 1):
@@ -92,10 +118,6 @@ class PDF:
                      f"startxref\n{xref}\n%%EOF\n").encode())
         Path(path).parent.mkdir(parents=True, exist_ok=True)
         Path(path).write_bytes(data)
-
-
-def avg(values):
-    return statistics.fmean(values)
 
 
 def heading(pdf, x, y, number, title):
@@ -118,187 +140,164 @@ def stat_text(stat, digits=1, scale=1):
     return ("{:.%df} +/- {:.%df}" % (digits, digits)).format(stat["mean"] * scale, stat["sd"] * scale)
 
 
-def chart(pdf, series, x, y, width, height, title, maximum=None):
-    """Small vector plot with physically clipped mean +/- sample-SD bands."""
-    max_x = max(point["step"] for points in series.values() for point in points)
-    max_y = maximum or max(.00001, max(point["mean"] + point["sd"] for points in series.values() for point in points) * 1.08)
-    left, top, pw, ph = x + 70, y + 36, width - 94, height - 94
+def chart(pdf, series, x, y, width, height, title, ylabel, maximum=None, percent=False):
+    max_x = max(point['step'] for points in series.values() for point in points)
+    max_y = maximum or max(.00001, max(p['mean'] + p['sd'] for points in series.values() for p in points) * 1.08)
+    left, top, pw, ph = x + 74, y + 55, width - 100, height - 110
     xm = lambda value: left + pw * value / max_x
     ym = lambda value: top + ph * (1 - value / max_y)
-    pdf.text(x + 12, y + 4, title, 23, "F2")
-    for index in range(4):
-        value = max_y * index / 3
+    pdf.text(x + 12, y + 4, title, 23, 'F2')
+    pdf.text(left, y + 31, ylabel, 18, color=MUTED)
+    for index in range(5):
+        value = max_y * index / 4
         yy = ym(value)
         pdf.line(left, yy, left + pw, yy)
-        label = "%.3f" % value if max_y < .1 else number(round(value, 1))
-        pdf.text(left - 64, yy + 6, label, 18, color=MUTED)
+        label = ('%g%%' % value) if percent else ('%.3f' % value if max_y < .1 else number(round(value, 1)))
+        pdf.text(left - 65, yy + 6, label, 18, color=MUTED)
     for index in range(6):
         value = max_x * index / 5
         xx = xm(value)
         pdf.line(xx, top + ph, xx, top + ph + 5, MUTED)
-        pdf.text(xx - 13, top + ph + 27, number(value), 18, color=MUTED)
-    pdf.text(left + pw / 2 - 120, y + height - 2, "Q decisions (up to 6 physics frames)", 19, color=MUTED)
+        pdf.text(xx - 15, top + ph + 27, number(value), 18, color=MUTED)
+    pdf.text(left + pw / 2 - 90, y + height - 2, 'Training decisions', 20, color=MUTED)
     for variant, points in series.items():
-        hi = [(xm(point["step"]), ym(min(max_y, point["mean"] + point["sd"]))) for point in points]
-        lo = [(xm(point["step"]), ym(max(0, point["mean"] - point["sd"]))) for point in reversed(points)]
+        hi = [(xm(p['step']), ym(min(max_y, p['mean'] + p['sd']))) for p in points]
+        lo = [(xm(p['step']), ym(max(0, p['mean'] - p['sd']))) for p in reversed(points)]
         pdf.path(hi + lo, pale(COLORS[variant]), fill=True)
-    for variant, points in series.items():
-        pdf.path([(xm(point["step"]), ym(point["mean"])) for point in points], COLORS[variant], 3)
+        pdf.path([(xm(p['step']), ym(p['mean'])) for p in points], COLORS[variant], 3)
 
 
 def timing_chart(pdf, variants, x, y, width):
-    maximum = max(entry["cumulative_cost"]["train_seconds"]["mean"] + entry["cumulative_cost"]["train_seconds"]["sd"] for entry in variants.values()) * 1.05
-    for index, (variant, entry) in enumerate(variants.items()):
-        yy = y + index * 90
-        pdf.text(x, yy, LABELS[variant], 22, "F2", COLORS[variant])
-        incremental, cumulative = entry["stage_cost"]["train_seconds"], entry["cumulative_cost"]["train_seconds"]
-        pdf.text(x + 205, yy, "%.1fs / %.1fs" % (incremental["mean"], cumulative["mean"]), 22, "F2")
-        for offset, stat, color in ((12, cumulative, pale(COLORS[variant], .35)), (34, incremental, COLORS[variant])):
-            pdf.rect(x, yy + offset, width, 14, BG)
-            pdf.rect(x, yy + offset, width * stat["mean"] / maximum, 14, color)
-            lo, hi = max(0, stat["mean"] - stat["sd"]), stat["mean"] + stat["sd"]
-            pdf.line(x + width * lo / maximum, yy + offset + 7, x + width * hi / maximum, yy + offset + 7, INK, 2)
-            for value in (lo, hi):
-                xx = x + width * value / maximum
-                pdf.line(xx, yy + offset + 2, xx, yy + offset + 12, INK, 1.5)
+    """The two training-time comparisons, drawn from the same data as training_time.svg."""
+    panel_width = (width - 140) / 2
+    for panel, (key, title) in enumerate((('stage_cost', 'Time spent learning this stage'),
+                                         ('cumulative_cost', 'Total time, including earlier stages'))):
+        xx = x + panel * (panel_width + 140)
+        left, top, pw, ph = xx + 72, y + 60, panel_width - 100, 120
+        maximum = max(v[key]['train_seconds']['mean'] + v[key]['train_seconds']['sd'] for v in variants.values()) * 1.22
+        maximum = max(100, ((int(maximum) + 99) // 100) * 100)
+        pdf.text(xx + 40, y + 8, title, 24, 'F2')
+        pdf.text(xx + 12, y + 37, 'Seconds', 18, color=MUTED)
+        ym = lambda value: top + ph * (1 - value / maximum)
+        for i in range(4):
+            value = maximum * i / 3
+            pdf.line(left, ym(value), left + pw, ym(value))
+            pdf.text(left - 59, ym(value) + 6, '%.0f' % value, 18, color=MUTED)
+        for i, (variant, entry) in enumerate(variants.items()):
+            stat = entry[key]['train_seconds']
+            center = left + pw * (i + .5) / 3
+            low, high = max(0, stat['mean'] - stat['sd']), stat['mean'] + stat['sd']
+            pdf.rect(center - 48, ym(stat['mean']), 96, ph * stat['mean'] / maximum, COLORS[variant])
+            pdf.line(center, ym(low), center, ym(high), INK, 2)
+            for bound in (low, high):
+                pdf.line(center - 7, ym(bound), center + 7, ym(bound), INK, 2)
+            pdf.text(center - 33, ym(high) - 12, '%.1f s' % stat['mean'], 23, 'F2')
+            pdf.text(center - 52, top + ph + 30, LABELS[variant], 21)
 
 
-def _validation_series(summary, metric, variants=None):
-    return {variant: [{"step": point["step"], **point[metric]} for point in points]
-            for variant, points in summary["validation_curves"].items()
-            if variants is None or variant in variants}
+def _validation_series(summary, metric, scale=1):
+    return {variant: [{'step': p['step'], 'mean': p[metric]['mean'] * scale,
+                      'sd': p[metric]['sd'] * scale} for p in points]
+            for variant, points in summary['validation_curves'].items()}
 
 
 def build(results, out):
     results = Path(results)
-    manifest = json.loads((results / "run_manifest.json").read_text(encoding="utf-8"))
+    manifest = json.loads((results / 'run_manifest.json').read_text(encoding='utf-8'))
     summary = aggregate(results)
-    groups = groups_for(manifest["records"])
-    variants = summary["variants"]
-    if set(variants) != {"fly", "asteroids", "oxygen"} or any(entry["n"] != 5 for entry in variants.values()):
-        raise ValueError("Primary poster requires five official-reward runs for each variant")
-    if any(int(row["repeat"]) != 6 for row in manifest["records"]):
-        raise ValueError("Curriculum poster requires the frozen six-frame action interval")
-    if any(not row.get("qualified", False) for row in manifest["records"]):
-        raise ValueError("Final poster requires all five chains to qualify at every stage; inspect the failed-gate report")
-    budgets = {variant: {int(row["budget"]) for row in rows} for variant, rows in groups.items()}
-    if any(len(values) != 1 for values in budgets.values()):
-        raise ValueError("Allocated budgets must match across chains within a stage")
-    budget_labels = {variant: number(next(iter(values))) for variant, values in budgets.items()}
+    groups = groups_for(manifest['records'])
+    variants = summary['variants']
+    if set(variants) != {'fly', 'asteroids', 'oxygen'} or any(v['n'] != 5 for v in variants.values()):
+        raise ValueError('Poster requires five official-reward runs for each variant')
+    if any(r['repeat'] != 6 or not r.get('qualified', False) for r in manifest['records']):
+        raise ValueError('Poster requires the qualified six-frame curriculum models')
+    oxy = variants['oxygen']['greedy']
+    oxygen_games = sum(r['greedy']['episodes'] for r in groups['oxygen'])
+    oxygen_total = round(sum(r['greedy']['oxygen_mean'] * r['greedy']['episodes'] for r in groups['oxygen']))
     pdf = PDF()
     pdf.rect(0, 0, W, H, BG)
-    pdf.rect(0, 0, W, 265, NAVY)
-    pdf.text(65, 53, "INTELLIGENT SYSTEMS  /  SEMINAR 1", 24, "F2", "8FD9E1")
-    pdf.text(2153, 53, "GROUP 7", 24, "F2", WHITE)
-    pdf.text(65, 139, "Reinforcement learning with the Astronaut", 76, "F2", WHITE)
-    pdf.text(68, 191, "Tabular Q-learning with official rewards, learned skill transfer and survival-gated checkpoints", 31, color="CEDDE8")
-    pdf.text(68, 238, "Andrea Kitanovska  (89262058)   |   Hristijan Kochovski  (89262125)", 28, "F2", WHITE)
-    pdf.text(1960, 238, "UP FAMNIT  |  2026", 24, color="CEDDE8")
+    pdf.rect(0, 0, W, 250, NAVY)
+    pdf.text(65, 52, 'INTELLIGENT SYSTEMS / SEMINAR 1', 23, 'F2', '8FD9E1')
+    pdf.text(65, 127, 'Reinforcement learning with the Astronaut', 65, 'F2', WHITE)
+    pdf.text(68, 182, 'Learning to fly, avoid asteroids and collect oxygen with a Q-table', 29, color='CEDDE8')
+    pdf.text(68, 225, 'Andrea Kitanovska (89262058)  |  Hristijan Kochovski (89262125)', 27, 'F2', WHITE)
+    # Official UP FAMNIT logo: https://www.famnit.upr.si/wp-content/uploads/2025/12/FAMNIT-logo-bel-1.png
+    pdf.image(Path(__file__).with_name('assets') / 'famnit-logo.jpg', 1948, 22, 340)
 
-    card_w = (W - 130 - 44) / 3
-    for index, (variant, metric, scale, label) in enumerate((
-            ("fly", "survival_rate", 100, "full-episode completion (%)"),
-            ("asteroids", "survival_rate", 100, "full-episode completion (%)"),
-            ("oxygen", "oxygen_mean", 1, "oxygen tanks / episode"))):
-        xx = 65 + index * (card_w + 22)
-        pdf.rect(xx, 291, card_w, 139, WHITE)
-        pdf.rect(xx, 291, 8, 139, COLORS[variant])
-        pdf.text(xx + 24, 326, LABELS[variant].upper(), 23, "F2", COLORS[variant])
-        pdf.text(xx + 24, 379, stat_text(variants[variant]["greedy"][metric], 1 if scale == 100 else 2, scale), 45, "F2")
-        pdf.text(xx + 24, 412, label + "  |  mean +/- sample SD", 21, color=MUTED)
-    pdf.text(68, 467, "Q decisions: flight %s / asteroids %s / oxygen %s  |  5 independent chains  |  Validation gates  |  Unseen final tests" % (budget_labels["fly"], budget_labels["asteroids"], budget_labels["oxygen"]), 24, color=MUTED)
+    card_w = (W - 174) / 3
+    for i, variant in enumerate(variants):
+        xx = 65 + i * (card_w + 22)
+        pdf.rect(xx, 275, card_w, 145, WHITE)
+        pdf.rect(xx, 275, 7, 145, COLORS[variant])
+        pdf.text(xx + 23, 310, LABELS[variant].upper(), 23, 'F2', COLORS[variant])
+        completion = variants[variant]['greedy']['survival_rate']['mean'] * 100
+        if variant == 'oxygen':
+            pdf.text(xx + 23, 361, '%.1f%%  /  %.2f tanks' % (completion, oxy['oxygen_mean']['mean']), 40, 'F2')
+            pdf.text(xx + 23, 399, 'Games completed / average tanks per game', 21, color=MUTED)
+        else:
+            pdf.text(xx + 23, 361, '%.1f%%' % completion, 46, 'F2')
+            pdf.text(xx + 23, 399, 'Games completed without a collision', 21, color=MUTED)
+    pdf.text(68, 458, 'Five independently trained agents. Asteroid and oxygen results use 100 new test games per agent.', 24, color=MUTED)
 
     lx, mx, rx = 65, 750, 1685
     lw, mw, rw = 650, 900, 634
     for xx, width in ((lx, lw), (mx, mw), (rx, rw)):
-        pdf.rect(xx, 490, width, 1048, WHITE)
-    heading(pdf, lx + 22, 542, "01", "Method and experiment")
-    pdf.para(lx + 23, 590,
-             "Learn flight, extend its Q values to asteroid avoidance, then extend learned avoidance to oxygen. The course simulator is unchanged.", lw - 46, 24, 31)
-    pdf.text(lx + 23, 713, "PUBLIC OBSERVATIONS -> DISCRETE STATE", 22, "F2", MUTED)
-    for index, variant in enumerate(variants):
-        yy = 758 + index * 64
-        pdf.rect(lx + 23, yy - 26, lw - 46, 54, BG)
-        pdf.text(lx + 35, yy + 8, LABELS[variant], 24, "F2", COLORS[variant])
-        pdf.text(lx + 355, yy + 8, "%s states" % format(variants[variant]["state_capacity"], ","), 24, "F2")
-    pdf.para(lx + 23, 944,
-             "Public height, velocity, arrival time and motion-projected offsets. Oxygen keeps the full hazard prefix. Copied rows may have zero child visits.", lw - 46, 22, 29)
-    pdf.text(lx + 23, 1064, "CLASSICAL Q-LEARNING", 22, "F2", MUTED)
-    pdf.text(lx + 23, 1105, "target = R + g^k max Q(s',a')", 23, "F4")
-    pdf.text(lx + 23, 1143, "Q(s,a) <- Q(s,a) + alpha*(target-Q(s,a))", 20, "F4")
-    pdf.para(lx + 23, 1184,
-             "R sums discounted official rewards over k <= 6 frames. Use g^k for actual executed frames. Collision: no bootstrap; time limit: bootstrap.", lw - 46, 22, 29)
-    settings = groups["fly"][0]
-    alpha_values = {row["alpha"] for row in manifest["records"]}
-    gamma_values = {row["gamma"] for row in manifest["records"]}
-    config = settings.get("config", {})
-    alpha_label = "%g" % next(iter(alpha_values)) if len(alpha_values) == 1 else "see stage configs"
-    if len(alpha_values) > 1 and groups["asteroids"][0]["alpha"] == groups["oxygen"][0]["alpha"]:
-        alpha_label = "%g flight, %g wrapped" % (settings["alpha"], groups["oxygen"][0]["alpha"])
-    gamma_label = "%g" % next(iter(gamma_values)) if len(gamma_values) == 1 else "see stage configs"
-    pdf.para(lx + 23, 1285,
-             "alpha: %s. g/frame = %g. Epsilon: flight 1 to 0.05; asteroids 0.25 to 0.01; oxygen 0.25 to 0.05. Seeds: 11, 23, 37, 51, 79." %
-             (alpha_label, settings.get("gamma_per_frame", config.get("gamma_per_frame", .9995))), lw - 46, 22, 29)
-    pdf.text(lx + 23, 1400, "OFFICIAL REWARDS / FROZEN EVALUATION", 22, "F2", MUTED)
-    pdf.para(lx + 23, 1439,
-             "-1 collision; +1 pickup; 0 otherwise. No shaping. 50 validation / 100 test seeds for wrapped tasks; flight uses one deterministic episode.", lw - 46, 22, 29)
+        pdf.rect(xx, 482, width, 800, WHITE)
+    heading(pdf, lx + 22, 535, '01', 'How the agent learns')
+    pdf.para(lx + 23, 582, 'We first teach the astronaut to stay in the air. We then add asteroids and, finally, oxygen tanks. Each harder stage builds on the Q-values learned earlier.', lw - 46, 23, 30)
+    pdf.text(lx + 23, 720, 'A SMALL TABLE OF POSSIBLE SITUATIONS', 21, 'F2', MUTED)
+    details = {'fly': 'Height and vertical speed', 'asteroids': 'Flight + asteroid arrival time and offset',
+               'oxygen': 'Asteroids + tank position and availability'}
+    for i, variant in enumerate(variants):
+        yy = 760 + i * 73
+        pdf.rect(lx + 23, yy - 25, lw - 46, 64, BG)
+        pdf.text(lx + 35, yy, LABELS[variant], 23, 'F2', COLORS[variant])
+        pdf.text(lx + 330, yy, '%s states' % format(variants[variant]['state_capacity'], ','), 23, 'F2')
+        pdf.text(lx + 35, yy + 25, details[variant], 19, color=MUTED)
+    pdf.para(lx + 23, 997, 'For each situation, the table stores a value for coasting and a value for thrusting. The agent explores both actions and updates their values after each attempt.', lw - 46, 22, 29)
+    pdf.text(lx + 23, 1112, 'Q(s,a) <- Q(s,a) + alpha * error', 23, 'F4')
+    pdf.para(lx + 23, 1155, 'The error compares the current value with the reward and the best next value. Actions last up to six frames. A tank earns +1; a collision earns -1; other frames earn 0.', lw - 46, 22, 29)
 
-    heading(pdf, mx + 22, 542, "02", "Learning, beyond the loss")
-    legend_x = mx + 23
-    for variant in variants:
-        pdf.line(legend_x, 580, legend_x + 28, 580, COLORS[variant], 4)
-        pdf.text(legend_x + 38, 587, LABELS[variant], 20)
-        legend_x += 228
-    chart(pdf, _validation_series(summary, "frames_mean"), mx + 23, 621, mw - 46, 255,
-          "Validation: mean survived physics steps", 1200)
-    chart(pdf, _validation_series(summary, "oxygen_mean", ("oxygen",)), mx + 23, 948, mw - 46, 233,
-          "Validation: oxygen tanks / episode")
-    chart(pdf, training_curves(results, groups), mx + 23, 1247, mw - 46, 220,
-          "Training: mean squared TD residual")
-    pdf.para(mx + 26, 899, "Five-chain means +/- sample SD; phases have different budgets.", mw - 52, 21, 27)
-    pdf.para(mx + 26, 1202, "Promotion needs two passes; survival constrains tank ranking.", mw - 52, 21, 27)
-    pdf.para(mx + 26, 1493, "Oxygen TD residuals persist; better behavior does not establish loss convergence.", mw - 52, 21, 27)
+    heading(pdf, mx + 22, 535, '02', 'What changes during training')
+    for i, variant in enumerate(variants):
+        xx = mx + 23 + i * 243
+        pdf.line(xx, 572, xx + 27, 572, COLORS[variant], 4)
+        pdf.text(xx + 37, 579, LABELS[variant], 20)
+    chart(pdf, _validation_series(summary, 'survival_rate', 100), mx + 23, 614, mw - 46, 245,
+          'Validation: finishing a full game without collisions', 'Completed 20-second games (%)', 100, True)
+    pdf.para(mx + 26, 891, 'At each checkpoint, we test without exploration: one flight game, or 50 games with objects. Higher lines mean fewer collisions. Later stages start with earlier skills.', mw - 52, 21, 27)
+    chart(pdf, training_curves(results, groups), mx + 23, 995, mw - 46, 200,
+          'How the Q-value prediction error changes', 'Mean squared TD error')
+    pdf.para(mx + 26, 1225, 'Flight and avoidance errors fall. Oxygen error stays above zero even when collection improves; this does not show loss convergence.', mw - 52, 21, 27)
 
-    heading(pdf, rx + 22, 542, "03", "Test results and cost")
-    pdf.text(rx + 23, 592, "SELECTED POLICY: MEAN +/- SAMPLE SD", 21, "F2", MUTED)
-    for index, variant in enumerate(variants):
-        yy = 639 + index * 106
-        entry = variants[variant]["greedy"]
-        pdf.text(rx + 23, yy, LABELS[variant], 24, "F2", COLORS[variant])
-        pdf.text(rx + 23, yy + 32, "Frames: " + stat_text(entry["frames_mean"], 1), 23)
-        pdf.text(rx + 23, yy + 62, "Complete: " + stat_text(entry["survival_rate"], 1, 100) + "%", 23)
-    oxy = variants["oxygen"]["greedy"]
-    pdf.para(rx + 23, 965,
-             "Oxygen: %s tanks per 1,000 survived steps. Complete with >=3 tanks: %s%%." %
-             (stat_text(oxy["oxygen_per_1000_frames"], 2), stat_text(oxy["combined_success_rate"], 1, 100)), rw - 46, 22, 29)
-    pdf.text(rx + 23, 1072, "TRAINING COST: INCREMENTAL / CUMULATIVE", 21, "F2", MUTED)
-    timing_chart(pdf, variants, rx + 23, 1114, rw - 46)
-    pdf.text(rx + 23, 1380, "Dark: stage / pale: plus parents; whiskers: sample SD.", 19, color=MUTED)
-    random_frames = variants["oxygen"]["random"]["frames_mean"]["mean"]
-    random_tanks = variants["oxygen"]["random"]["oxygen_mean"]["mean"]
-    pdf.para(rx + 23, 1425,
-             "Qualified oxygen chains: %d/%d. Random: %.1f frames, %.2f tanks. Seed 11 is the fixed demo. Transfer and unequal stage budgets prevent a from-zero cost comparison." %
-             (variants["oxygen"]["qualified_runs"], variants["oxygen"]["n"], random_frames, random_tanks), rw - 46, 21, 27)
+    heading(pdf, rx + 22, 535, '03', 'How it plays after training')
+    pdf.para(rx + 23, 583, 'These are separate test games, used after selecting each policy. Values show the mean +/- standard deviation across five agents.', rw - 46, 21, 27)
+    for i, variant in enumerate(variants):
+        yy = 720 + i * 116
+        entry = variants[variant]['greedy']
+        pdf.text(rx + 23, yy, LABELS[variant], 24, 'F2', COLORS[variant])
+        pdf.text(rx + 23, yy + 34, 'Completed: ' + stat_text(entry['survival_rate'], 1, 100) + '%', 23)
+        if variant == 'oxygen':
+            pdf.text(rx + 23, yy + 68, 'Tanks/game: ' + stat_text(entry['oxygen_mean'], 2), 23)
+        else:
+            pdf.text(rx + 23, yy + 68, 'Average game: %.2f seconds' % (entry['frames_mean']['mean'] / 60), 22)
+    pdf.para(rx + 23, 1084, 'The oxygen agents collected %s tanks across %s test games: %.2f tanks per game on average.' % (format(oxygen_total, ','), format(oxygen_games, ','), oxy['oxygen_mean']['mean']), rw - 46, 22, 29)
+    pdf.para(rx + 23, 1197, '%.1f%% of games finished with at least three tanks. The shaded bands in the learning graphs show variation between agents.' % (100 * oxy['combined_success_rate']['mean']), rw - 46, 21, 27)
 
-
-    pdf.rect(65, 1557, W - 130, 91, NAVY)
-    pdf.text(83, 1588, "REPRODUCIBLE AND UNMODIFIED", 20, "F2", "8FD9E1")
-    sha = str(summary["environment_commit"])[:12]
-    pdf.text(83, 1620, "Python %s / %s  |  Official famnit-gym %s  |  Default physics and rewards" % (manifest.get("python", "recorded"), manifest.get("machine", "recorded"), sha), 20, color=WHITE)
-    pdf.text(1290, 1588, "COST AND UNCERTAINTY", 20, "F2", "8FD9E1")
-    pdf.text(1290, 1620, "Five parallel chains; active wall time excludes validation/export. Cumulative includes parents.", 19, color=WHITE)
-    pdf.text(65, 1670, "Sources: Watkins & Dayan, Q-learning (1992); Domen Soberl, official famnit-gym. Exact bins, configs, checkpoint logs, tests and model hashes accompany the source ZIP.", 18, color=MUTED)
+    pdf.rect(65, 1307, W - 130, 342, WHITE)
+    pdf.text(87, 1346, 'TRAINING TIME: HOW LONG DID LEARNING TAKE?', 25, 'F2')
+    timing_chart(pdf, variants, 90, 1382, W - 180)
     pdf.save(out)
     return Path(out)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--results", type=Path, default=Path("results"))
-    parser.add_argument("--out", type=Path, default=Path("poster.pdf"))
+    parser.add_argument('--results', type=Path, default=Path('results'))
+    parser.add_argument('--out', type=Path, default=Path('poster.pdf'))
     args = parser.parse_args()
     print(build(args.results, args.out))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

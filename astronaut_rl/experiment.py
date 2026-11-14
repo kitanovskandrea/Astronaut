@@ -124,13 +124,6 @@ def gate_passed(metrics, gate):
             and metrics["oxygen_mean"] >= gate["minimum_oxygen_mean"])
 
 
-def target_met(metrics, target):
-    """Compatibility helper for a flat numeric threshold dictionary."""
-    thresholds = target.get("thresholds", target)
-    thresholds = {k: v for k, v in thresholds.items() if isinstance(v, (int, float)) and not isinstance(v, bool)}
-    return bool(thresholds) and all(metrics[k] >= value for k, value in thresholds.items())
-
-
 def write_csv(path, rows):
     if not rows:
         return

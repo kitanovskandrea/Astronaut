@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img">
-<title>Validation-selected policies on unseen test scenarios</title>
-<desc>Episodes averaged within each policy, then mean +/- sample SD across independent chains</desc>
+<title>How the trained agents perform in new games</title>
+<desc>Results average five trained agents; error bars show sample SD between agents</desc>
 <rect width="1200" height="740" fill="#fff"/>
 <style>text{font-family:Arial,Helvetica,sans-serif;fill:#172d45} .title{font-size:28px;font-weight:700} .subtitle{font-size:16px;fill:#526778} .axis{font-size:15px;fill:#526778} .small{font-size:14px;fill:#526778} .value{font-size:17px;font-weight:700} .panel{font-size:19px;font-weight:700}</style>
-<text x="52" y="55" class="title" text-anchor="start">Validation-selected policies on unseen test scenarios</text>
-<text x="52" y="87" class="subtitle" text-anchor="start">Episodes averaged within each policy, then mean +/- sample SD across independent chains</text>
+<text x="52" y="55" class="title" text-anchor="start">How the trained agents perform in new games</text>
+<text x="52" y="87" class="subtitle" text-anchor="start">Results average five trained agents; error bars show sample SD between agents</text>
 <rect x="803" y="110" width="19" height="14" fill="#2867c7" opacity="1"/>
-<text x="831" y="123" class="small" text-anchor="start">Selected Q policy</text>
+<text x="831" y="123" class="small" text-anchor="start">Trained agent</text>
 <rect x="1000" y="110" width="19" height="14" fill="#b7c5d2" opacity="1"/>
-<text x="1028" y="123" class="small" text-anchor="start">Random</text>
-<text x="320" y="164" class="panel" text-anchor="middle">Full-episode completion</text>
+<text x="1028" y="123" class="small" text-anchor="start">Random actions</text>
+<text x="320" y="164" class="panel" text-anchor="middle">Games completed without a collision</text>
 <line x1="110" y1="560" x2="530" y2="560" stroke="#e2e9ef" stroke-width="1"/>
 <text x="98" y="565" class="axis" text-anchor="end">0%</text>
 <line x1="110" y1="487" x2="530" y2="487" stroke="#e2e9ef" stroke-width="1"/>
@@ -27,36 +27,36 @@
 <line x1="156.7" y1="195" x2="156.7" y2="195" stroke="#172d45" stroke-width="1.7"/>
 <line x1="151.7" y1="195" x2="161.7" y2="195" stroke="#172d45" stroke-width="1.7"/>
 <line x1="151.7" y1="195" x2="161.7" y2="195" stroke="#172d45" stroke-width="1.7"/>
-<text x="156.7" y="189" class="small" text-anchor="middle">100.0</text>
+<text x="156.7" y="189" class="small" text-anchor="middle">100.0%</text>
 <rect x="183" y="560" width="40.6" height="0" fill="#b7c5d2" opacity="1"/>
 <line x1="203.3" y1="560" x2="203.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
 <line x1="198.3" y1="560" x2="208.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
 <line x1="198.3" y1="560" x2="208.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
-<text x="203.3" y="548" class="small" text-anchor="middle">0.0</text>
+<text x="203.3" y="548" class="small" text-anchor="middle">0.0%</text>
 <text x="180" y="592" class="axis" text-anchor="middle">Flight</text>
 <rect x="276.4" y="200.11" width="40.6" height="359.89" fill="#2867c7" opacity="1"/>
 <line x1="296.7" y1="209.628" x2="296.7" y2="195" stroke="#172d45" stroke-width="1.7"/>
 <line x1="291.7" y1="209.628" x2="301.7" y2="209.628" stroke="#172d45" stroke-width="1.7"/>
 <line x1="291.7" y1="195" x2="301.7" y2="195" stroke="#172d45" stroke-width="1.7"/>
-<text x="296.7" y="189" class="small" text-anchor="middle">98.6</text>
+<text x="296.7" y="189" class="small" text-anchor="middle">98.6%</text>
 <rect x="323" y="560" width="40.6" height="0" fill="#b7c5d2" opacity="1"/>
 <line x1="343.3" y1="560" x2="343.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
 <line x1="338.3" y1="560" x2="348.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
 <line x1="338.3" y1="560" x2="348.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
-<text x="343.3" y="548" class="small" text-anchor="middle">0.0</text>
+<text x="343.3" y="548" class="small" text-anchor="middle">0.0%</text>
 <text x="320" y="592" class="axis" text-anchor="middle">+ Asteroids</text>
 <rect x="416.4" y="206.68" width="40.6" height="353.32" fill="#2867c7" opacity="1"/>
 <line x1="436.7" y1="218.048" x2="436.7" y2="195.312" stroke="#172d45" stroke-width="1.7"/>
 <line x1="431.7" y1="218.048" x2="441.7" y2="218.048" stroke="#172d45" stroke-width="1.7"/>
 <line x1="431.7" y1="195.312" x2="441.7" y2="195.312" stroke="#172d45" stroke-width="1.7"/>
-<text x="436.7" y="189" class="small" text-anchor="middle">96.8</text>
+<text x="436.7" y="189" class="small" text-anchor="middle">96.8%</text>
 <rect x="463" y="560" width="40.6" height="0" fill="#b7c5d2" opacity="1"/>
 <line x1="483.3" y1="560" x2="483.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
 <line x1="478.3" y1="560" x2="488.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
 <line x1="478.3" y1="560" x2="488.3" y2="560" stroke="#172d45" stroke-width="1.7"/>
-<text x="483.3" y="548" class="small" text-anchor="middle">0.0</text>
+<text x="483.3" y="548" class="small" text-anchor="middle">0.0%</text>
 <text x="460" y="592" class="axis" text-anchor="middle">+ Oxygen</text>
-<text x="920" y="164" class="panel" text-anchor="middle">Oxygen collection</text>
+<text x="920" y="164" class="panel" text-anchor="middle">Oxygen tanks collected per game</text>
 <line x1="710" y1="560" x2="1130" y2="560" stroke="#e2e9ef" stroke-width="1"/>
 <text x="698" y="565" class="axis" text-anchor="end">0</text>
 <line x1="710" y1="487" x2="1130" y2="487" stroke="#e2e9ef" stroke-width="1"/>
@@ -103,7 +103,7 @@
 <line x1="1078.3" y1="557.445" x2="1088.3" y2="557.445" stroke="#172d45" stroke-width="1.7"/>
 <text x="1083.3" y="545.445" class="small" text-anchor="middle">0.07</text>
 <text x="1060" y="592" class="axis" text-anchor="middle">+ Oxygen</text>
-<text x="52" y="652" class="small" text-anchor="start">Main model = checkpoint selected with validation only; final test outcomes do not select the model.</text>
-<text x="52" y="678" class="small" text-anchor="start">Flight: one deterministic test episode. Asteroids/oxygen: 100 paired test seeds per policy.</text>
-<text x="52" y="704" class="small" text-anchor="start">Independent training chains are the replicates. Repeated random baselines are the same paired seed set.</text>
+<text x="52" y="652" class="small" text-anchor="start">Models are chosen using validation games, then tested on separate games without further learning.</text>
+<text x="52" y="678" class="small" text-anchor="start">Flight uses one deterministic game per agent; the other tasks use 100 new games per agent.</text>
+<text x="52" y="704" class="small" text-anchor="start">The random player uses the same test games. Repeating that baseline does not create new independent agents.</text>
 </svg>

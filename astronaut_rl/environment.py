@@ -14,12 +14,6 @@ VARIANTS = ("fly", "asteroids", "oxygen")
 ENV_COMMIT = "0db0652ad3b8cece05d476c56637a3dcb56557cd"
 
 
-def default_profile(variant):
-    if variant not in VARIANTS:
-        raise ValueError(f"Unknown variant: {variant}")
-    return "official"
-
-
 @lru_cache(maxsize=1)
 def check_environment():
     """Version 0.2 was reused upstream: verify code, not just its version label."""

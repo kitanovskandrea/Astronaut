@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img">
-<title>Validation full-episode success curve</title>
+<title>How often the agent completes a full validation game</title>
 <desc>Independent curriculum-chain means; n = 5; official rewards unchanged</desc>
 <rect width="1200" height="740" fill="#fff"/>
 <style>text{font-family:Arial,Helvetica,sans-serif;fill:#172d45} .title{font-size:28px;font-weight:700} .subtitle{font-size:16px;fill:#526778} .axis{font-size:15px;fill:#526778} .small{font-size:14px;fill:#526778} .value{font-size:17px;font-weight:700} .panel{font-size:19px;font-weight:700}</style>
-<text x="52" y="55" class="title" text-anchor="start">Validation full-episode success curve</text>
+<text x="52" y="55" class="title" text-anchor="start">How often the agent completes a full validation game</text>
 <text x="52" y="87" class="subtitle" text-anchor="start">Independent curriculum-chain means; n = 5; official rewards unchanged</text>
 <line x1="112" y1="582" x2="1142" y2="582" stroke="#e2e9ef" stroke-width="1"/>
 <text x="100" y="587" class="axis" text-anchor="end">0%</text>

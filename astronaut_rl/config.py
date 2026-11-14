@@ -29,8 +29,5 @@ def load_config(variant):
     return config
 
 
-stage_config = load_config
-
-
 def config_hash(config):
     return hashlib.sha256(json.dumps(config,sort_keys=True,separators=(',', ':'),allow_nan=False).encode()).hexdigest()
