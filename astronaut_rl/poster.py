@@ -219,7 +219,7 @@ def build(results, out):
     pdf.rect(0, 0, W, 250, NAVY)
     pdf.text(65, 52, 'INTELLIGENT SYSTEMS / SEMINAR 1', 23, 'F2', '8FD9E1')
     pdf.text(65, 127, 'Reinforcement learning with the Astronaut', 65, 'F2', WHITE)
-    pdf.text(68, 182, 'Learning to fly, avoid asteroids and collect oxygen with a Q-table', 29, color='CEDDE8')
+    pdf.text(68, 182, 'Training an astronaut to fly, dodge asteroids and collect oxygen using Q-learning', 28, color='CEDDE8')
     pdf.text(68, 225, 'Andrea Kitanovska (89262058)  |  Hristijan Kochovski (89262125)', 27, 'F2', WHITE)
     # Official UP FAMNIT logo: https://www.famnit.upr.si/wp-content/uploads/2025/12/FAMNIT-logo-bel-1.png
     pdf.image(Path(__file__).with_name('assets') / 'famnit-logo.jpg', 1948, 22, 340)
@@ -237,26 +237,26 @@ def build(results, out):
         else:
             pdf.text(xx + 23, 361, '%.1f%%' % completion, 46, 'F2')
             pdf.text(xx + 23, 399, 'Games completed without a collision', 21, color=MUTED)
-    pdf.text(68, 458, 'Five independently trained agents. Asteroid and oxygen results use 100 new test games per agent.', 24, color=MUTED)
+    pdf.text(68, 458, 'Five independent training runs; for asteroids and oxygen, each trained agent was tested in 100 unseen games.', 23, color=MUTED)
 
     lx, mx, rx = 65, 750, 1685
     lw, mw, rw = 650, 900, 634
     for xx, width in ((lx, lw), (mx, mw), (rx, rw)):
         pdf.rect(xx, 482, width, 800, WHITE)
     heading(pdf, lx + 22, 535, '01', 'How the agent learns')
-    pdf.para(lx + 23, 582, 'We first teach the astronaut to stay in the air. We then add asteroids and, finally, oxygen tanks. Each harder stage builds on the Q-values learned earlier.', lw - 46, 23, 30)
-    pdf.text(lx + 23, 720, 'A SMALL TABLE OF POSSIBLE SITUATIONS', 21, 'F2', MUTED)
-    details = {'fly': 'Height and vertical speed', 'asteroids': 'Flight + asteroid arrival time and offset',
-               'oxygen': 'Asteroids + tank position and availability'}
+    pdf.para(lx + 23, 582, 'We begin with flight control, then add asteroids and oxygen tanks. Each stage builds on the Q-values learned in the previous one.', lw - 46, 23, 30)
+    pdf.text(lx + 23, 720, 'WHAT GOES INTO THE Q-TABLE?', 21, 'F2', MUTED)
+    details = {'fly': 'Height and vertical speed', 'asteroids': 'Flight + asteroid arrival time and height',
+               'oxygen': 'Avoidance + oxygen position and availability'}
     for i, variant in enumerate(variants):
         yy = 760 + i * 73
         pdf.rect(lx + 23, yy - 25, lw - 46, 64, BG)
         pdf.text(lx + 35, yy, LABELS[variant], 23, 'F2', COLORS[variant])
         pdf.text(lx + 330, yy, '%s states' % format(variants[variant]['state_capacity'], ','), 23, 'F2')
         pdf.text(lx + 35, yy + 25, details[variant], 19, color=MUTED)
-    pdf.para(lx + 23, 997, 'For each situation, the table stores a value for coasting and a value for thrusting. The agent explores both actions and updates their values after each attempt.', lw - 46, 22, 29)
+    pdf.para(lx + 23, 997, 'For each state, the Q-table stores two values: one for coasting and one for thrusting. The astronaut tries both and updates the values based on what happens next.', lw - 46, 22, 29)
     pdf.text(lx + 23, 1112, 'Q(s,a) <- Q(s,a) + alpha * error', 23, 'F4')
-    pdf.para(lx + 23, 1155, 'The error compares the current value with the reward and the best next value. Actions last up to six frames. A tank earns +1; a collision earns -1; other frames earn 0.', lw - 46, 22, 29)
+    pdf.para(lx + 23, 1155, 'The update uses the rewards received and the estimated value of the best next action. Each choice lasts up to six physics frames. A tank gives +1, a collision gives -1, and other steps give 0.', lw - 46, 22, 29)
 
     heading(pdf, mx + 22, 535, '02', 'What changes during training')
     for i, variant in enumerate(variants):
@@ -264,14 +264,14 @@ def build(results, out):
         pdf.line(xx, 572, xx + 27, 572, COLORS[variant], 4)
         pdf.text(xx + 37, 579, LABELS[variant], 20)
     chart(pdf, _validation_series(summary, 'survival_rate', 100), mx + 23, 614, mw - 46, 245,
-          'Validation: finishing a full game without collisions', 'Completed 20-second games (%)', 100, True)
-    pdf.para(mx + 26, 891, 'At each checkpoint, we test without exploration: one flight game, or 50 games with objects. Higher lines mean fewer collisions. Later stages start with earlier skills.', mw - 52, 21, 27)
+          'How survival improves during training', '20-second games finished without collision (%)', 100, True)
+    pdf.para(mx + 26, 889, 'Each color shows a game stage. The x-axis counts action choices during training; the y-axis shows the percentage of 20-second games finished without a crash. At checkpoints, the agent plays without random exploration. Flight improves first; later stages build on earlier skills. Shading shows differences between agents.', mw - 52, 21, 27)
     chart(pdf, training_curves(results, groups), mx + 23, 995, mw - 46, 200,
           'How the Q-value prediction error changes', 'Mean squared TD error')
-    pdf.para(mx + 26, 1225, 'Flight and avoidance errors fall. Oxygen error stays above zero even when collection improves; this does not show loss convergence.', mw - 52, 21, 27)
+    pdf.para(mx + 26, 1219, 'Flight and asteroid prediction errors fall. Oxygen error remains higher and rises later, even though the agent collects tanks. We cannot claim loss convergence for oxygen.', mw - 52, 21, 27)
 
     heading(pdf, rx + 22, 535, '03', 'How it plays after training')
-    pdf.para(rx + 23, 583, 'These are separate test games, used after selecting each policy. Values show the mean +/- standard deviation across five agents.', rw - 46, 21, 27)
+    pdf.para(rx + 23, 583, "After training, the agents play using only their learned Q-values. 'Completed' means finishing all 20 seconds without a collision; 'Average game' is the mean survival time. The oxygen stage also reports tanks collected per game. Values are averages across five trained agents (+/- SD).", rw - 46, 21, 27)
     for i, variant in enumerate(variants):
         yy = 720 + i * 116
         entry = variants[variant]['greedy']
@@ -281,9 +281,9 @@ def build(results, out):
             pdf.text(rx + 23, yy + 68, 'Tanks/game: ' + stat_text(entry['oxygen_mean'], 2), 23)
         else:
             pdf.text(rx + 23, yy + 68, 'Average game: %.2f seconds' % (entry['frames_mean']['mean'] / 60), 22)
-    pdf.para(rx + 23, 1084, 'The oxygen agents collected %s tanks across %s test games: %.2f tanks per game on average.' % (format(oxygen_total, ','), format(oxygen_games, ','), oxy['oxygen_mean']['mean']), rw - 46, 22, 29)
-    pdf.para(rx + 23, 1197, '%.1f%% of games finished with at least three tanks. The shaded bands in the learning graphs show variation between agents.' % (100 * oxy['combined_success_rate']['mean']), rw - 46, 21, 27)
 
+    heading(pdf, rx + 22, 1080, '04', 'Conclusion')
+    pdf.para(rx + 23, 1127, 'We trained the astronaut with tabular Q-learning, first to fly, then to avoid asteroids and collect oxygen. The hardest part was describing moving objects in a small enough state table without losing important detail. We are proud that the final agents finished 96.8% of test games and collected 5.32 tanks per game using the original rewards.', rw - 46, 20.5, 25.5)
     pdf.rect(65, 1307, W - 130, 342, WHITE)
     pdf.text(87, 1346, 'TRAINING TIME: HOW LONG DID LEARNING TAKE?', 25, 'F2')
     timing_chart(pdf, variants, 90, 1382, W - 180)
